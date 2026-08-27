@@ -31,10 +31,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
 <body>
     <div class="flex gap-10 h-screen bg-blue-100">
-
         <!-- side bar -->
-
-
         <div class="flex flex-col h-screen gap-3 w-40 p-2 bg-gray-100">
             <div class="flex items-center justify-center gap-5 border-b-2 border-blue-200 ">
                 <img class="h-15 mb-10 "
@@ -58,23 +55,9 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     </a>
                 </div>
             <?php endforeach;  ?>
-
-            <div class="flex items-center justify-around mt-auto border-t-2 border-blue-200">
-                <?php foreach ($socials as $social): ?>
-                    <li class="list-none ">
-                        <a href="">
-                            <img class="h-8 mt-10 transition delay-120 duration-150 ease-out hover:-translate-y-1 hover:scale-110"
-                                src=<?= $social["url"] ?>
-                                alt=<?= $social["alt"] ?>>
-                        </a>
-                    </li>
-                <?php endforeach;  ?>
-            </div>
         </div>
 
-
         <div class="flex flex-col mt-5">
-
             <!-- Up bar -->
 
             <div class="flex justify-between items-center bg-gray-100 gap-5 w-300 p-5 rounded-xl">

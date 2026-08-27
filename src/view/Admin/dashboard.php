@@ -148,18 +148,6 @@ $currentDate = date("Y-m-d");
                     </a>
                 </div>
             <?php endforeach;  ?>
-
-            <div class="flex items-center justify-around mt-auto border-t-2 border-blue-200">
-                <?php foreach ($socials as $social): ?>
-                    <li class="list-none ">
-                        <a href="">
-                            <img class="h-8 mt-10 transition delay-120 duration-150 ease-out hover:-translate-y-1 hover:scale-110"
-                                src=<?= $social["url"] ?>
-                                alt=<?= $social["alt"] ?>>
-                        </a>
-                    </li>
-                <?php endforeach;  ?>
-            </div>
         </div>
 
 

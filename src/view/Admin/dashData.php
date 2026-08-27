@@ -24,18 +24,3 @@ $sideBarView = [
     ],
 ];
 
-$socials = [
-    [
-        "url" => "../assets/images/facebook.png",
-        "alt" => "facebook"
-    ],
-    [
-        "url" => "../assets/images/instagram.png",
-        "alt" => "instagram"
-    ],
-    [
-        "url" => "../assets/images/tik-tok.png",
-        "alt" => "tik-tok"
-    ]
-];
-
