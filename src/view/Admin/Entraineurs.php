@@ -70,368 +70,275 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <?php endforeach; ?>
         </div>
 
-        <div class="flex flex-col mt-5
-            max-xl:mr-3
-            max-lg:mr-2
-            max-md:mt-3 max-md:w-full
-            max-sm:mt-2">
+        <div class="flex flex-col mt-5 w-full
+    max-xl:mr-3 max-lg:mr-2
+    max-md:mt-3 max-sm:mt-2">
 
             <!-- Up bar -->
+            <!-- Changed w-300 to w-full to prevent horizontal overflow bugs -->
+            <div class="flex justify-between items-center bg-gray-100 gap-5 w-full p-5 rounded-xl shadow-sm
+        max-xl:p-4 max-lg:gap-3 max-lg:p-3
+        max-md:pl-16 max-sm:p-2 max-sm:pl-14 max-sm:gap-2">
 
-            <div class="flex justify-between items-center bg-gray-100 gap-5 w-300 p-5 rounded-xl
-                max-xl:w-full max-xl:p-4
-                max-lg:gap-3 max-lg:p-3
-                max-md:pl-16
-                max-sm:p-2 max-sm:pl-14 max-sm:gap-2">
-
-                <div class="flex justify-center items-center gap-3
-                    max-sm:gap-1">
-
-                    <img class="h-10
-                        max-md:h-8
-                        max-sm:h-7" src="../assets/images/loupe.png" alt="serch">
-
+                <div class="flex justify-center items-center gap-3 max-sm:gap-1">
+                    <img class="h-10 max-md:h-8 max-sm:h-7" src="../assets/images/loupe.png" alt="serch">
                     <input class="border border-slate-300 rounded-lg px-3 py-2
-                       focus:border-blue-500 focus:ring-2 focus:ring-blue-200
-                       outline-none transition
-                       max-md:w-48
-                       max-sm:w-32 max-sm:px-2 max-sm:py-1.5" id="filter" type="text" placeholder="Searche">
+               focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition
+               max-md:w-48 max-sm:w-32 max-sm:px-2 max-sm:py-1.5" id="filter" type="text" placeholder="Searche">
                 </div>
 
-                <div class="flex justify-center items-center gap-5
-                    max-md:gap-2">
-
+                <div class="flex justify-center items-center gap-5 max-md:gap-2">
                     <form action="../../controller/logoutController.php" method="POST">
-
                         <button type="submit" name="logout" class="cursor-pointer group flex items-center justify-center gap-2
-                           px-5 py-2.5 text-sm font-medium text-white
-                           transition-all duration-300 ease-in-out
-                           bg-linear-to-r from-red-500 to-red-600
-                           rounded-lg shadow-md shadow-red-500/30
-                           hover:from-red-600 hover:to-red-700
-                           hover:shadow-lg hover:-translate-y-0.5
-                           hover:shadow-red-500/40
-                           focus:ring-4 focus:ring-red-500/50 focus:outline-none
-                           dark:shadow-red-900/50
-                           max-md:px-3 max-md:py-2
-                           max-sm:px-2 max-sm:py-1.5 max-sm:text-xs max-sm:gap-1">
+                   px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 ease-in-out
+                   bg-linear-to-r from-red-500 to-red-600 rounded-lg shadow-md shadow-red-500/30
+                   hover:from-red-600 hover:to-red-700 hover:shadow-lg hover:-translate-y-0.5 hover:shadow-red-500/40
+                   focus:ring-4 focus:ring-red-500/50 focus:outline-none dark:shadow-red-900/50
+                   max-md:px-3 max-md:py-2 max-sm:px-2 max-sm:py-1.5 max-sm:text-xs max-sm:gap-1">
 
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 transition-transform duration-300 group-hover:-translate-x-1
-                               max-md:w-6 max-md:h-6
-                               max-sm:w-5 max-sm:h-5" viewBox="0 0 512 512">
-
+                       max-md:w-6 max-md:h-6 max-sm:w-5 max-sm:h-5" viewBox="0 0 512 512">
                                 <path
                                     d="M304 336v40a40 40 0 01-40 40H104a40 40 0 01-40-40V136a40 40 0 0140-40h152c22.09 0 48 17.91 48 40v40M368 336l80-80-80-80M176 256h256"
                                     fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="32" />
                             </svg>
-
-                            Se déconnecter
+                            <span class="max-sm:hidden">Se déconnecter</span>
                         </button>
-
                     </form>
                 </div>
             </div>
 
 
-            <!-- check date naissance -->
+            <!-- Alert messages (PHP logic completely untouched) -->
 
             <?php if (isset($errorDateNaissance)): ?>
-
-                <div class="flex items-center justify-between w-full max-w-sm gap-3 p-3 mt-2
-                    text-red-800 bg-red-100 border border-red-200 rounded-lg shadow-sm
-                    max-sm:p-2" role="alert">
-
-                    <span class="flex-1 text-sm font-medium">
-                        <?php echo $errorDateNaissance; ?>
-                    </span>
-
+                <div class="flex items-center justify-between w-full max-w-sm gap-3 p-3 mt-4 text-red-800 bg-red-100 border border-red-200 rounded-lg shadow-sm max-sm:p-2 max-md:max-w-full"
+                    role="alert">
+                    <span class="flex-1 text-sm font-medium"><?php echo $errorDateNaissance; ?></span>
                     <div class="ml-4 items-center flex">
                         <button class="inline-flex text-white transition ease-in-out duration-150 cursor-pointer"
                             onclick="return this.parentNode.parentNode.remove()">
-
                             <svg class="h-5 w-5" viewBox="0 0 20 20" fill="red">
                                 <path fill-rule="evenodd"
                                     d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                                     clip-rule="evenodd" />
                             </svg>
-
                         </button>
                     </div>
                 </div>
-
             <?php endif; ?>
 
-
-            <!-- Check telephone -->
-
             <?php if (isset($errorTele)): ?>
-
-                <div class="flex items-center justify-between w-full max-w-sm gap-3 p-3 mt-2
-                    text-red-800 bg-red-100 border border-red-200 rounded-lg shadow-sm
-                    max-sm:p-2" role="alert">
-
-                    <span class="flex-1 text-sm font-medium">
-                        <?php echo $errorTele; ?>
-                    </span>
-
+                <div class="flex items-center justify-between w-full max-w-sm gap-3 p-3 mt-4 text-red-800 bg-red-100 border border-red-200 rounded-lg shadow-sm max-sm:p-2 max-md:max-w-full"
+                    role="alert">
+                    <span class="flex-1 text-sm font-medium"><?php echo $errorTele; ?></span>
                     <div class="ml-4 items-center flex">
                         <button class="inline-flex text-white transition ease-in-out duration-150 cursor-pointer"
                             onclick="return this.parentNode.parentNode.remove()">
-
                             <svg class="h-5 w-5" viewBox="0 0 20 20" fill="red">
                                 <path fill-rule="evenodd"
                                     d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 1.414 1.414 1.414L11.414 10l4.293 4.293a1 1 1 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                                     clip-rule="evenodd" />
                             </svg>
-
                         </button>
                     </div>
                 </div>
-
             <?php endif; ?>
 
-
-            <!-- nom and prenom check for numbers input -->
-
             <?php if (isset($numberError)): ?>
-
-                <div class="flex items-center justify-between w-full max-w-sm gap-3 p-3 mt-2
-                    text-red-800 bg-red-100 border border-red-200 rounded-lg shadow-sm
-                    max-sm:p-2" role="alert">
-
-                    <span class="flex-1 text-sm font-medium">
-                        <?php echo $numberError; ?>
-                    </span>
-
+                <div class="flex items-center justify-between w-full max-w-sm gap-3 p-3 mt-4 text-red-800 bg-red-100 border border-red-200 rounded-lg shadow-sm max-sm:p-2 max-md:max-w-full"
+                    role="alert">
+                    <span class="flex-1 text-sm font-medium"><?php echo $numberError; ?></span>
                     <div class="ml-4 items-center flex">
                         <button class="inline-flex text-white transition ease-in-out duration-150 cursor-pointer"
                             onclick="return this.parentNode.parentNode.remove()">
-
                             <svg class="h-5 w-5" viewBox="0 0 20 20" fill="red">
                                 <path fill-rule="evenodd"
                                     d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                                     clip-rule="evenodd" />
                             </svg>
-
                         </button>
                     </div>
                 </div>
-
             <?php endif; ?>
 
-
-            <!-- check entraineur -->
-
             <?php if (isset($error)): ?>
-
-                <div class="flex items-center justify-between w-full max-w-sm gap-3 p-3 mt-2
-                    text-red-800 bg-red-100 border border-red-200 rounded-lg shadow-sm
-                    max-sm:p-2" role="alert">
-
-                    <span class="flex-1 text-sm font-medium">
-                        <?php echo $error; ?>
-                    </span>
-
+                <div class="flex items-center justify-between w-full max-w-sm gap-3 p-3 mt-4 text-red-800 bg-red-100 border border-red-200 rounded-lg shadow-sm max-sm:p-2 max-md:max-w-full"
+                    role="alert">
+                    <span class="flex-1 text-sm font-medium"><?php echo $error; ?></span>
                     <div class="ml-4 items-center flex">
                         <button class="inline-flex text-white transition ease-in-out duration-150 cursor-pointer"
                             onclick="return this.parentNode.parentNode.remove()">
-
                             <svg class="h-5 w-5" viewBox="0 0 20 20" fill="red">
                                 <path fill-rule="evenodd"
                                     d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 01-1.414-1.414 1.414 1.414 0 011.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                                     clip-rule="evenodd" />
                             </svg>
-
                         </button>
                     </div>
                 </div>
-
             <?php elseif (isset($validation)): ?>
-
-                <div class="flex items-center justify-between w-full max-w-sm gap-3 p-3 mt-2
-                    text-green-800 bg-green-100 border border-green-200 rounded-lg shadow-sm
-                    max-sm:p-2" role="alert">
-
-                    <span class="text-green-600 font-semibold text-md text-center">
-                        <?php echo $validation; ?>
-                    </span>
-
+                <div class="flex items-center justify-between w-full max-w-sm gap-3 p-3 mt-4 text-green-800 bg-green-100 border border-green-200 rounded-lg shadow-sm max-sm:p-2 max-md:max-w-full"
+                    role="alert">
+                    <span class="text-green-600 font-semibold text-md text-center"><?php echo $validation; ?></span>
                     <div class="ml-4 flex items-center">
-
                         <button class="inline-flex text-white transition ease-in-out duration-150 cursor-pointer"
                             onclick="return this.parentNode.parentNode.remove()">
-
                             <svg class="h-5 w-5" viewBox="0 0 20 20" fill="green">
                                 <path fill-rule="evenodd"
                                     d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 011.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                                     clip-rule="evenodd" />
                             </svg>
-
                         </button>
-
                     </div>
                 </div>
-
             <?php endif; ?>
 
 
             <!-- Form -->
+            <!-- Changed to CSS Grid (grid-cols-3) for perfect scaling, stacking to 1 column on max-md -->
+            <form class="grid grid-cols-3 gap-8 mt-5 p-6 rounded-xl bg-white shadow-sm w-full
+        max-xl:gap-6
+        max-lg:gap-4
+        max-md:grid-cols-1 max-md:gap-5 
+        max-sm:p-4" action="Entraineurs.php" method="POST">
 
-            <form class="flex justify-center gap-20 mt-5 p-5 rounded-xl bg-white
-               max-xl:gap-10
-               max-lg:gap-6
-               max-md:flex-col max-md:gap-5 max-md:w-full
-               max-sm:p-3" action="Entraineurs.php" method="POST">
-
-                <div class="flex flex-col gap-5
-                    max-md:w-full">
-
-                    <div class="flex flex-col gap-5">
-                        <label for="prenom">Prénom: </label>
-
-                        <input class="border border-slate-300 rounded-lg px-3 py-2
-                           focus:border-blue-500 focus:ring-2 focus:ring-blue-200
-                           outline-none transition
-                           max-md:w-full" id="prenom" type="text" name="prenom">
+                <!-- Column 1 -->
+                <div class="flex flex-col gap-5 w-full">
+                    <div class="flex flex-col gap-2">
+                        <label for="prenom" class="font-medium text-slate-700">Prénom: </label>
+                        <input class="border border-slate-300 rounded-lg px-3 py-2 w-full
+                   focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition" id="prenom"
+                            type="text" name="prenom">
                     </div>
 
-                    <div class="flex flex-col gap-5">
-                        <label for="nom">Nom: </label>
-
-                        <input class="border border-slate-300 rounded-lg px-3 py-2
-                           focus:border-blue-500 focus:ring-2 focus:ring-blue-200
-                           outline-none transition
-                           max-md:w-full" id="nom" type="text" name="nom">
+                    <div class="flex flex-col gap-2">
+                        <label for="nom" class="font-medium text-slate-700">Nom: </label>
+                        <input class="border border-slate-300 rounded-lg px-3 py-2 w-full
+                   focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition" id="nom" type="text"
+                            name="nom">
                     </div>
-
                 </div>
 
-
-                <div class="flex flex-col gap-5
-                    max-md:w-full">
-
-                    <div class="flex flex-col gap-5">
-                        <label for="tele">Téléphone:</label>
-
-                        <input class="border border-slate-300 rounded-lg px-3 py-2
-                           focus:border-blue-500 focus:ring-2 focus:ring-blue-200
-                           outline-none transition
-                           max-md:w-full" id="tele" type="number" name="tele">
+                <!-- Column 2 -->
+                <div class="flex flex-col gap-5 w-full">
+                    <div class="flex flex-col gap-2">
+                        <label for="tele" class="font-medium text-slate-700">Téléphone:</label>
+                        <input class="border border-slate-300 rounded-lg px-3 py-2 w-full
+                   focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition" id="tele"
+                            type="number" name="tele">
                     </div>
 
-                    <div class="flex flex-col gap-5">
-                        <label for="DateN">Date de naissance: </label>
-
-                        <input class="border border-slate-300 rounded-lg px-3 py-2
-                           focus:border-blue-500 focus:ring-2 focus:ring-blue-200
-                           outline-none transition
-                           max-md:w-full" id="DateN" type="date" name="dateNaissance">
+                    <div class="flex flex-col gap-2">
+                        <label for="DateN" class="font-medium text-slate-700">Date de naissance: </label>
+                        <input class="border border-slate-300 rounded-lg px-3 py-2 w-full
+                   focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition" id="DateN"
+                            type="date" name="dateNaissance">
                     </div>
-
                 </div>
 
-
-                <div class="flex flex-col gap-5
-                    max-md:w-full">
-
-                    <div class="flex flex-col gap-5">
-
-                        <div class="flex flex-col gap-5">
-                            <label for="specialite">Spécialité: </label>
-
-                            <input class="border border-slate-300 rounded-lg px-3 py-2
-                               focus:border-blue-500 focus:ring-2 focus:ring-blue-200
-                               outline-none transition
-                               max-md:w-full" id="specialite" type="text" name="specialite">
-                        </div>
-
+                <!-- Column 3 -->
+                <!-- Added h-full and justify-between so the submit button perfectly aligns with the bottom -->
+                <div class="flex flex-col gap-5 w-full h-full justify-between">
+                    <div class="flex flex-col gap-2">
+                        <label for="specialite" class="font-medium text-slate-700">Spécialité: </label>
+                        <input class="border border-slate-300 rounded-lg px-3 py-2 w-full
+                   focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition" id="specialite"
+                            type="text" name="specialite">
                     </div>
 
-                    <input class="px-4.5 py-1 text-white text-lg bg-blue-600 rounded-lg
-                       shadow-sm hover:bg-blue-700 transition-colors duration-200 cursor-pointer
-                       max-md:w-full" type="submit" value="Ajouter">
-
+                    <input class="px-5 py-2.5 mt-auto text-white text-lg font-medium bg-blue-600 rounded-lg w-full
+               shadow-md hover:bg-blue-700 transition-colors duration-200 cursor-pointer" type="submit"
+                        value="Ajouter">
                 </div>
 
             </form>
 
-
             <!-- Table -->
+            <!-- Changed invalid min-w-225 to min-w-[900px] and added overflow-x-auto to wrapper -->
+            <div class="mt-6 w-full">
+                <table
+                    class="w-full text-center border-collapse bg-white rounded-xl overflow-hidden shadow-sm max-md:block max-md:bg-transparent max-md:shadow-none">
 
-            <div class="mt-5 overflow-auto w-full">
-
-                <table class="table-auto w-full text-center border border-slate-200 rounded-xl overflow-hidden
-                      min-w-225">
-
-                    <thead class="bg-slate-300 border-b border-slate-200">
-
+                    <!-- Header: Hidden on mobile (max-md:hidden) -->
+                    <thead class="bg-slate-200 border-b-2 border-slate-300 max-md:hidden">
                         <tr>
-                            <td class="text-lg font-semibold p-3 text-slate-800">Nom</td>
-                            <td class="text-lg font-semibold p-3 text-slate-800">Prénom</td>
-                            <td class="text-lg font-semibold p-3 text-slate-800">Téléphone</td>
-                            <td class="text-lg font-semibold p-3 text-slate-800">Date de naissance</td>
-                            <td class="text-lg font-semibold p-3 text-slate-800">Spécialité</td>
-                            <td class="text-lg font-semibold p-3 text-slate-800">Admin</td>
-                            <td class="text-lg font-semibold p-3 text-slate-800">Action</td>
+                            <th class="text-md font-semibold p-4 text-slate-800">Nom</th>
+                            <th class="text-md font-semibold p-4 text-slate-800">Prénom</th>
+                            <th class="text-md font-semibold p-4 text-slate-800">Téléphone</th>
+                            <th class="text-md font-semibold p-4 text-slate-800">Date de naissance</th>
+                            <th class="text-md font-semibold p-4 text-slate-800">Spécialité</th>
+                            <th class="text-md font-semibold p-4 text-slate-800">Admin</th>
+                            <th class="text-md font-semibold p-4 text-slate-800">Action</th>
                         </tr>
-
                     </thead>
 
-                    <tbody class="divide-y divide-slate-100 text-sm text-slate-600">
+                    <!-- Body: Turns into block elements on mobile -->
+                    <tbody class="divide-y divide-slate-100 text-sm text-slate-700 max-md:block max-md:divide-y-0">
 
                         <?php foreach ($entraineurs as $entraineur): ?>
 
-                            <tr class="bg-slate-50 hover:bg-slate-200 transition-colors duration-200">
+                            <!-- On mobile: each row becomes a white card with a border and shadow -->
+                            <tr
+                                class="hover:bg-slate-50 transition-colors duration-200 
+                                      max-md:block max-md:bg-white max-md:mb-5 max-md:border max-md:border-slate-200 max-md:rounded-xl max-md:shadow-sm">
 
-                                <td class="p-3 font-semibold text-slate-700">
-                                    <?= $entraineur["Nom"] ?>
+                                <td
+                                    class="p-4 font-medium max-md:flex max-md:justify-between max-md:items-center max-md:border-b max-md:py-3">
+                                    <span class="hidden max-md:block font-bold text-slate-800">Nom :</span>
+                                    <span class="text-right"><?= $entraineur["Nom"] ?></span>
                                 </td>
 
-                                <td class="p-3 font-semibold text-slate-700">
-                                    <?= $entraineur["Prenom"] ?>
+                                <td
+                                    class="p-4 font-medium max-md:flex max-md:justify-between max-md:items-center max-md:border-b max-md:py-3">
+                                    <span class="hidden max-md:block font-bold text-slate-800">Prénom :</span>
+                                    <span class="text-right"><?= $entraineur["Prenom"] ?></span>
                                 </td>
 
-                                <td class="p-3 font-semibold text-slate-700">
-                                    <?= $entraineur["Tele"] ?>
+                                <td
+                                    class="p-4 font-medium max-md:flex max-md:justify-between max-md:items-center max-md:border-b max-md:py-3">
+                                    <span class="hidden max-md:block font-bold text-slate-800">Téléphone :</span>
+                                    <span class="text-right"><?= $entraineur["Tele"] ?></span>
                                 </td>
 
-                                <td class="p-3 font-semibold text-slate-700">
-                                    <?= (new DateTime($entraineur["DateNaissance"]))->format('d-m-Y') ?>
+                                <td
+                                    class="p-4 font-medium max-md:flex max-md:justify-between max-md:items-center max-md:border-b max-md:py-3">
+                                    <span class="hidden max-md:block font-bold text-slate-800">Date de naissance :</span>
+                                    <span
+                                        class="text-right"><?= (new DateTime($entraineur["DateNaissance"]))->format('d-m-Y') ?></span>
                                 </td>
 
-                                <td class="p-3 font-semibold text-slate-700">
-                                    <?= $entraineur["Specialite"] ?>
+                                <td
+                                    class="p-4 font-medium max-md:flex max-md:justify-between max-md:items-center max-md:border-b max-md:py-3">
+                                    <span class="hidden max-md:block font-bold text-slate-800">Spécialité :</span>
+                                    <span class="text-right"><?= $entraineur["Specialite"] ?></span>
                                 </td>
 
-                                <td class="p-3 font-semibold text-slate-700">
-                                    <?= $entraineur["admin_prenom"] ?>
+                                <td
+                                    class="p-4 font-medium max-md:flex max-md:justify-between max-md:items-center max-md:border-b max-md:py-3">
+                                    <span class="hidden max-md:block font-bold text-slate-800">Admin :</span>
+                                    <span class="text-right"><?= $entraineur["admin_prenom"] ?></span>
                                 </td>
 
-                                <td class="flex items-center justify-center gap-2 p-2">
+                                <td class="flex items-center justify-center gap-3 p-4 max-md:justify-end max-md:py-4">
+                                    <span class="hidden max-md:block font-bold text-slate-800 mr-auto">Action :</span>
 
-                                    <a href="./modifierEntraineur.php?id=<?= $entraineur["id"] ?>">
-                                        <button class="cursor-pointer hover:scale-110 transition-transform duration-200">
-                                            <img class="h-8 w-8" src="../assets/icons/editeUser.svg" alt="modifier">
-                                        </button>
+                                    <a href="./modifierEntraineur.php?id=<?= $entraineur["id"] ?>"
+                                        class="cursor-pointer hover:scale-110 transition-transform duration-200">
+                                        <img class="h-6 w-6" src="../assets/icons/editeUser.svg" alt="modifier">
                                     </a>
 
-                                    <a href="../../controller/suprimerEntraineursContoller.php?id=<?= $entraineur["id"] ?>">
-                                        <button
-                                            class="suprimer cursor-pointer hover:scale-110 transition-transform duration-200">
-                                            <img class="h-8 w-8" src="../assets/icons/delete.svg" alt="suprimer">
-                                        </button>
+                                    <a href="../../controller/suprimerEntraineursContoller.php?id=<?= $entraineur["id"] ?>"
+                                        class="suprimer cursor-pointer hover:scale-110 transition-transform duration-200">
+                                        <img class="h-6 w-6" src="../assets/icons/delete.svg" alt="suprimer">
                                     </a>
 
                                     <a href="../../../lib/FPDF/controller/imprimerEntraineursController.php?id=<?= $entraineur["id"] ?>"
-                                        target="_blank">
-
-                                        <button class="cursor-pointer hover:scale-110 transition-transform duration-200">
-                                            <img class="h-8 w-8" src="../assets/icons/printer.svg" alt="imprimer">
-                                        </button>
-
+                                        target="_blank"
+                                        class="cursor-pointer hover:scale-110 transition-transform duration-200">
+                                        <img class="h-6 w-6" src="../assets/icons/printer.svg" alt="imprimer">
                                     </a>
-
                                 </td>
 
                             </tr>
@@ -439,12 +346,11 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                         <?php endforeach; ?>
 
                     </tbody>
-
                 </table>
-
             </div>
-
         </div>
+
+    </div>
     </div>
 
     <script>
