@@ -119,14 +119,13 @@ $currentDate = date("Y-m-d");
 </head>
 
 <body>
-    <div class="flex gap-10 h-screen bg-blue-100 ">
-        <!-- side bar -->
+    <div class="flex h-screen bg-blue-100 overflow-hidden">
+
         <!-- Mobile menu button -->
         <button id="sidebarToggle" type="button" class="hidden max-md:flex fixed top-4 left-4 z-50
-           items-center justify-center w-10 h-10
-           bg-blue-500 text-white rounded-xl shadow-md
-           hover:bg-blue-600 transition-colors duration-200" aria-label="Ouvrir le menu" aria-expanded="false">
-
+        items-center justify-center w-10 h-10
+        bg-blue-500 text-white rounded-xl shadow-md
+        hover:bg-blue-600 transition-colors duration-200" aria-label="Ouvrir le menu" aria-expanded="false">
             <span class="text-2xl">☰</span>
         </button>
 
@@ -135,24 +134,23 @@ $currentDate = date("Y-m-d");
         </div>
 
         <!-- Sidebar -->
-        <div id="sidebar" class="flex flex-col h-screen gap-3 w-45 p-2 bg-gray-100
-           max-md:fixed max-md:top-0 max-md:left-0 max-md:z-50
-           max-md:w-64 max-md:h-screen
-           max-md:-translate-x-full
-           max-md:transition-transform max-md:duration-300">
+        <!-- Note: changed w-45 to w-64 as 45 isn't standard in Tailwind. Added shrink-0 so it doesn't get squished -->
+        <div id="sidebar" class="flex flex-col h-full gap-3 w-64 p-4 shrink-0 bg-gray-100
+        max-md:fixed max-md:top-0 max-md:left-0 max-md:z-50
+        max-md:-translate-x-full max-md:transition-transform max-md:duration-300">
 
-            <div class="flex items-center justify-center gap-5 border-b-2 border-blue-200">
-                <img class="h-15 mb-10 max-md:hidden" src="../assets/images/top-sport-noBack.png" alt="TopSport">
+            <div class="flex items-center justify-center gap-5 border-b-2 border-blue-200 pb-2">
+                <img class="h-12 mb-8 object-contain max-md:mb-4" src="../assets/images/top-sport-noBack.png"
+                    alt="TopSport">
             </div>
 
             <?php foreach ($sideBarView as $sideBar): ?>
-
-                <div class="flex items-center gap-3 hover:bg-blue-100 hover:rounded-2xl px-4 py-2.5
+                <div class="flex items-center gap-3 hover:bg-blue-100 hover:rounded-2xl px-4 py-2.5 transition-colors
             <?= (basename($sideBar["link"]) == $currentPage)
                 ? 'bg-blue-200 rounded-2xl'
                 : 'hover:bg-blue-100 hover:rounded-2xl' ?>">
 
-                    <a href="<?= $sideBar["link"] ?>">
+                    <a href="<?= $sideBar["link"] ?>" class="shrink-0">
                         <img class="h-6 w-6" src="<?= $sideBar["img"] ?>" alt="home">
                     </a>
 
@@ -163,21 +161,22 @@ $currentDate = date("Y-m-d");
             <?php endforeach; ?>
         </div>
 
-        <div class="flex flex-col items-center gap-5 mt-2 mr-5 overflow-auto
-            max-xl:mr-3
-            max-lg:mr-2 max-lg:px-2
-            max-md:mr-0 max-md:w-full max-md:px-3
-            max-sm:px-2">
+        <!-- Main Content Wrapper -->
+        <div class="flex-1 flex flex-col gap-6 p-6 overflow-y-auto w-full
+        max-xl:gap-5 max-xl:p-5
+        max-lg:gap-4 max-lg:p-4
+        max-md:gap-4 max-md:p-3
+        max-sm:gap-3 max-sm:p-2">
 
             <!-- Up bar -->
-            <div class="flex justify-between items-center bg-gray-100 gap-5 w-300 p-5 rounded-xl
-                max-xl:w-full max-xl:p-4
-                max-lg:gap-3 max-lg:p-3
-                max-md:w-full max-md:pl-16
-                max-sm:p-2 max-sm:pl-14">
+            <div class="flex justify-between items-center bg-gray-100 w-full p-5 rounded-xl shadow-sm
+            max-xl:p-4
+            max-lg:p-3
+            max-md:pl-16 
+            max-sm:p-2 max-sm:pl-14">
 
                 <div class="flex justify-center items-center gap-3">
-                    <h1 class="text-xl text-blue-700 font-bold max-sm:text-lg">
+                    <h1 class="text-xl text-blue-700 font-bold max-sm:text-lg tracking-wide">
                         TOP SPORT
                     </h1>
                 </div>
@@ -185,116 +184,80 @@ $currentDate = date("Y-m-d");
                 <div class="flex justify-center items-center">
                     <form action="../../controller/logoutController.php" method="POST">
                         <button type="submit" name="logout" class="cursor-pointer group flex items-center justify-center gap-2
-                           px-5 py-2.5 text-sm font-medium text-white
-                           transition-all duration-300 ease-in-out
-                           bg-linear-to-r from-red-500 to-red-600
-                           rounded-lg shadow-md shadow-red-500/30
-                           hover:from-red-600 hover:to-red-700
-                           hover:shadow-lg hover:-translate-y-0.5
-                           hover:shadow-red-500/40
-                           focus:ring-4 focus:ring-red-500/50 focus:outline-none
-                           dark:shadow-red-900/50
-                           max-md:px-3 max-md:py-2
-                           max-sm:text-xs max-sm:gap-1">
+                        px-5 py-2.5 text-sm font-medium text-white
+                        transition-all duration-300 ease-in-out
+                        bg-linear-to-r from-red-500 to-red-600
+                        rounded-lg shadow-md shadow-red-500/30
+                        hover:from-red-600 hover:to-red-700
+                        hover:shadow-lg hover:-translate-y-0.5
+                        focus:ring-4 focus:ring-red-500/50 focus:outline-none
+                        max-md:px-3 max-md:py-2 max-sm:text-xs max-sm:gap-1">
 
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 transition-transform duration-300 group-hover:-translate-x-1
-                               max-sm:w-5 max-sm:h-5" viewBox="0 0 512 512">
-
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="w-6 h-6 transition-transform duration-300 group-hover:-translate-x-1 max-sm:w-5 max-sm:h-5"
+                                viewBox="0 0 512 512">
                                 <path
                                     d="M304 336v40a40 40 0 01-40 40H104a40 40 0 01-40-40V136a40 40 0 0140-40h152c22.09 0 48 17.91 48 40v40M368 336l80-80-80-80M176 256h256"
                                     fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="32" />
                             </svg>
-
-                            Se déconnecter
+                            <span class="max-sm:hidden">Se déconnecter</span>
                         </button>
                     </form>
                 </div>
             </div>
 
+            <!-- Charts Row -->
+            <!-- flex-1 is used here instead of fixed widths, making it scale perfectly -->
+            <div class="grid grid-cols-2 max-md:grid-cols-1 w-full gap-6 max-xl:gap-5 max-lg:gap-4 max-md:gap-4">
 
-            <!-- Charts -->
-            <div class="flex justify-center gap-2 w-full
-                max-xl:gap-3
-                max-lg:gap-3
-                max-md:flex-col max-md:items-center
-                max-sm:gap-3">
-
-                <div style="width: 580px; height: auto;" class="bg-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow
-                   max-xl:w-[48%]!
-                   max-lg:w-[48%]!
-                   max-md:w-full!">
-
-                    <canvas id="revenuChart"></canvas>
+                <!-- Chart 1 -->
+                <div
+                    class="w-full bg-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow p-4 relative h-75 max-sm:h-62.5 max-sm:p-2">
+                    <canvas id="revenuChart" class="w-full h-full"></canvas>
                 </div>
 
-                <div style="width: 590px; height: auto;" class="bg-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow
-                   max-xl:w-[48%]!
-                   max-lg:w-[48%]!
-                   max-md:w-full!">
-
-                    <canvas id="revenueActivityChart"></canvas>
+                <!-- Chart 2 -->
+                <div
+                    class="w-full bg-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow p-4 relative h-75 max-sm:h-62.5 max-sm:p-2">
+                    <canvas id="revenueActivityChart" class="w-full h-full"></canvas>
                 </div>
 
             </div>
-
             <!-- Total adherents + chart -->
-            <div class="flex justify-center gap-5 w-full mb-2
-                max-xl:gap-3
-                max-lg:gap-3
-                max-md:flex-col max-md:items-center
-                max-sm:gap-3">
+            <div
+                class="flex w-full gap-6 pb-6 max-xl:gap-5 max-lg:gap-4 max-md:flex-col max-md:gap-4 max-md:pb-4 max-sm:pb-2">
 
-                <!-- Total adherents -->
-                <div class="flex flex-col items-center justify-center gap-4
-                   bg-white border border-gray-100 rounded-2xl
-                   shadow-sm hover:shadow-md transition-shadow
-                   w-146 h-70 p-8 text-center
-                   max-xl:w-[48%]!
-                   max-lg:w-[48%]!
-                   max-md:w-full! max-md:h-auto max-md:p-5
-                   max-sm:p-4">
+                <!-- Total adherents Box -->
+                <div class="flex-1 w-full flex flex-col items-center justify-center gap-4
+                bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow
+                p-8 max-xl:p-6 max-lg:p-4 max-md:py-8 max-sm:py-6">
 
-                    <div class="bg-linear-to-br from-blue-500 to-indigo-600
-                       p-4 rounded-2xl shadow-lg shadow-blue-200
-                       max-sm:p-3">
-
-                        <img class="h-12 w-12 invert brightness-0
-                           max-sm:h-10 max-sm:w-10" src="../assets/icons/people-outline.svg" alt="people">
+                    <div
+                        class="bg-linear-to-br from-blue-500 to-indigo-600 p-4 rounded-2xl shadow-lg shadow-blue-200 max-sm:p-3">
+                        <img class="h-12 w-12 invert brightness-0 max-sm:h-10 max-sm:w-10"
+                            src="../assets/icons/people-outline.svg" alt="people">
                     </div>
 
-                    <div class="mt-2">
-                        <p class="text-5xl font-black text-gray-900 tracking-tight
-                           max-lg:text-4xl
-                           max-sm:text-3xl">
-
+                    <div class="mt-2 text-center">
+                        <p class="text-5xl font-black text-gray-900 tracking-tight max-lg:text-4xl max-sm:text-3xl">
                             <?= $totalAdherents ?>
-
                         </p>
-
-                        <h2 class="text-gray-500 font-medium uppercase tracking-widest
-                           text-xs mt-3 max-sm:text-[10px]">
-
+                        <h2 class="text-gray-500 font-medium uppercase tracking-widest text-xs mt-3 max-sm:text-[10px]">
                             Total Adhérents
-
                         </h2>
                     </div>
                 </div>
 
-                <!-- Chart -->
-                <div style="width: 590px; height: 280px;" class="bg-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow
-                   max-xl:w-[48%]!
-                   max-lg:w-[48%]!
-                   max-md:w-full! max-md:h-auto!
-                   max-sm:min-h-55">
-
+                <!-- Bottom Chart Box -->
+                <div
+                    class="flex-1 w-full bg-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow p-4 relative min-h-75 max-sm:min-h-62.5 max-sm:p-2">
                     <canvas id="myChart"></canvas>
-
                 </div>
 
             </div>
-
         </div>
+    </div>
     </div>
 
     <script>
