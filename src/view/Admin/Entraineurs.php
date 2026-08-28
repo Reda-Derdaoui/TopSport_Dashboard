@@ -42,24 +42,22 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         </div>
 
         <!-- Sidebar -->
-        <div id="sidebar" class="flex flex-col h-screen gap-3 w-45 p-2 bg-gray-100
-           max-md:fixed max-md:top-0 max-md:left-0 max-md:z-50
-           max-md:w-64 max-md:h-screen
-           max-md:-translate-x-full
-           max-md:transition-transform max-md:duration-300">
+        <div id="sidebar" class="flex flex-col h-full gap-3 w-45 p-4 shrink-0 bg-gray-100
+        max-md:fixed max-md:top-0 max-md:left-0 max-md:z-50
+        max-md:-translate-x-full max-md:transition-transform max-md:duration-300">
 
-            <div class="flex items-center justify-center gap-5 border-b-2 border-blue-200">
-                <img class="h-15 mb-10 max-md:hidden" src="../assets/images/top-sport-noBack.png" alt="TopSport">
+            <div class="flex items-center justify-center gap-5 border-b-2 border-blue-200 pb-2">
+                <img class="h-12 mb-8 object-contain max-md:mb-4" src="../assets/images/top-sport-noBack.png"
+                    alt="TopSport">
             </div>
 
             <?php foreach ($sideBarView as $sideBar): ?>
-
-                <div class="flex items-center gap-3 hover:bg-blue-100 hover:rounded-2xl px-4 py-2.5
+                <div class="flex items-center gap-3 hover:bg-blue-100 hover:rounded-2xl px-4 py-2.5 transition-colors
             <?= (basename($sideBar["link"]) == $currentPage)
                 ? 'bg-blue-200 rounded-2xl'
                 : 'hover:bg-blue-100 hover:rounded-2xl' ?>">
 
-                    <a href="<?= $sideBar["link"] ?>">
+                    <a href="<?= $sideBar["link"] ?>" class="shrink-0">
                         <img class="h-6 w-6" src="<?= $sideBar["img"] ?>" alt="home">
                     </a>
 
