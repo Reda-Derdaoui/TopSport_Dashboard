@@ -71,23 +71,23 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <?php endforeach; ?>
         </div>
 
-        <div class="flex flex-col mt-5">
+        <div class="flex flex-col mt-5 max-md:mt-3 max-sm:mt-2 w-full px-4 max-sm:px-2">
             <!-- Up Bar -->
-            <div class="flex justify-between items-center bg-gray-100 gap-5 w-335 p-5 rounded-xl">
-                <div class="flex justify-center items-center gap-3">
-                    <img class="h-10" src="../assets/images/loupe.png" alt="serch">
+            <div
+                class="flex justify-between items-center bg-gray-100 gap-5 w-full p-5 max-sm:p-4 rounded-xl max-sm:flex-col max-sm:justify-center">
+                <div class="flex justify-center items-center gap-3 max-sm:w-full">
+                    <img class="h-10 max-sm:h-8" src="../assets/images/loupe.png" alt="search">
                     <input
-                        class="border border-slate-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition"
-                        type="text" placeholder="Searche" id="filter">
+                        class="border border-slate-300 rounded-lg px-3 py-2 w-full focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition"
+                        type="text" placeholder="Recherche" id="filter">
                 </div>
 
-                <div class="flex justify-center items-center gap-5">
-
-                    <form action="../../controller/logoutController.php" method="POST">
+                <div class="flex justify-center items-center gap-5 max-sm:w-full">
+                    <form action="../../controller/logoutController.php" method="POST" class="max-sm:w-full">
                         <button type="submit" name="logout"
-                            class=" cursor-pointer group flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 ease-in-out bg-linear-to-r from-red-500 to-red-600 rounded-lg shadow-md shadow-red-500/30 hover:from-red-600 hover:to-red-700 hover:shadow-lg hover:-translate-y-0.5 hover:shadow-red-500/40 focus:ring-4 focus:ring-red-500/50 focus:outline-none dark:shadow-red-900/50">
+                            class="cursor-pointer group flex items-center justify-center gap-2 px-5 py-2.5 max-sm:w-full text-sm font-medium text-white transition-all duration-300 ease-in-out bg-linear-to-r from-red-500 to-red-600 rounded-lg shadow-md shadow-red-500/30 hover:from-red-600 hover:to-red-700 hover:shadow-lg hover:-translate-y-0.5 hover:shadow-red-500/40 focus:ring-4 focus:ring-red-500/50 focus:outline-none dark:shadow-red-900/50">
                             <svg xmlns="http://www.w3.org/2000/svg"
-                                class="w-7 h-7 transition-transform duration-300 group-hover:-translate-x-1"
+                                class="w-7 h-7 max-sm:w-6 max-sm:h-6 transition-transform duration-300 group-hover:-translate-x-1"
                                 viewBox="0 0 512 512">
                                 <path
                                     d="M304 336v40a40 40 0 01-40 40H104a40 40 0 01-40-40V136a40 40 0 0140-40h152c22.09 0 48 17.91 48 40v40M368 336l80-80-80-80M176 256h256"
@@ -101,8 +101,10 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </div>
 
             <!-- table -->
-            <div class="mt-10 overflow-auto">
-                <table class="table-auto w-335 text-center border border-slate-200 rounded-xl overflow-hidden">
+            <div
+                class="mt-10 max-lg:mt-8 max-sm:mt-5 overflow-x-auto w-full shadow-sm rounded-xl border border-slate-200">
+                <!-- min-w-[1200px] ensures the table columns don't crush on mobile. It allows horizontal scrolling -->
+                <table class="table-auto w-full min-w-300 text-center overflow-hidden">
                     <thead class="bg-slate-300 border-b border-slate-200">
                         <tr>
                             <th class="text-sm font-semibold p-3 text-slate-900">Prénom</th>
@@ -124,8 +126,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     <tbody class="divide-y divide-slate-100 text-sm text-slate-600">
                         <?php foreach ($adherents as $adherent): ?>
                             <tr class="bg-slate-50 hover:bg-slate-200 transition-colors duration-200">
-
-                                <td class="p-2 font-semibold  text-slate-700"><?= $adherent["Prenom"] ?></td>
+                                <td class="p-2 font-semibold text-slate-700"><?= $adherent["Prenom"] ?></td>
                                 <td class="p-2 font-semibold text-slate-700"><?= $adherent["Nom"] ?></td>
                                 <td class="p-2 font-semibold text-slate-700"><?= $adherent["Tele"] ?></td>
                                 <td class="p-2 font-semibold text-slate-700">
@@ -144,13 +145,12 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                                 <td class="p-2 font-semibold text-slate-700"><?= $adherent["entraineur_nom"] ?></td>
                                 <td class="p-2 font-semibold text-slate-700"><?= $adherent["responsable_nom"] ?></td>
                                 <td class="p-2">
-                                    <div class="flex items-center justify-center ">
-
+                                    <div class="flex items-center justify-center gap-2">
                                         <a
                                             href="./modifierAdherent.php?Id_adherent=<?= $adherent["Id_adherent"] ?>&Id_Abonnement=<?= $adherent["Id_Abonnement"] ?>">
                                             <button
                                                 class="editBtn cursor-pointer hover:scale-110 transition-transform duration-200">
-                                                <img class="h-7" src="../assets/icons/editeUser.svg" alt="modifier">
+                                                <img class="h-7 w-7" src="../assets/icons/editeUser.svg" alt="modifier">
                                             </button>
                                         </a>
 
@@ -158,8 +158,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                                             href="../../controller/suprimerAdherent.php?Id_adherent=<?= $adherent["Id_adherent"] ?>">
                                             <button
                                                 class="suprimer cursor-pointer hover:scale-110 transition-transform duration-200">
-                                                <img class="h-6.5 w-6.5  suprimer" src="../assets/icons/delete.svg"
-                                                    alt="suprimer">
+                                                <img class="h-6.5 w-6.5" src="../assets/icons/delete.svg" alt="suprimer">
                                             </button>
                                         </a>
 
@@ -167,7 +166,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                                             target="_blank">
                                             <button
                                                 class="cursor-pointer hover:scale-110 transition-transform duration-200">
-                                                <img class="w-6.5 h-6.5 " src="../assets/icons/printer.svg" alt="print">
+                                                <img class="w-6.5 h-6.5" src="../assets/icons/printer.svg" alt="print">
                                             </button>
                                         </a>
                                     </div>
