@@ -1,7 +1,7 @@
 
 function deleteConfirm(event) {
   if (event.target.closest(".suprimer")) {
-    const ok = confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?");
+    const ok = confirm("Are You Sure?!");
 
     if (!ok) {
       event.preventDefault();

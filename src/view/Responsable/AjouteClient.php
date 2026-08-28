@@ -228,26 +228,26 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     <input type="hidden" id="id" name="id">
                     <div class="flex flex-col gap-2">
                         <label class="text-slate-600 text-lg max-sm:text-base font-bold" for="prenom">Prénom</label>
-                        <input id="prenom" type="text" name="prenom"
+                        <input id="prenom" type="text" name="prenom" required
                             class="border border-slate-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
                     </div>
 
                     <div class="flex flex-col gap-2">
                         <label class="text-slate-600 text-lg max-sm:text-base font-bold" for="nom">Nom</label>
-                        <input id="nom" type="text" name="nom"
+                        <input id="nom" type="text" name="nom" required
                             class="border border-slate-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
                     </div>
 
                     <div class="flex flex-col gap-2">
                         <label class="text-slate-600 text-lg max-sm:text-base font-bold" for="tele">Téléphone</label>
-                        <input id="tele" type="number" name="tele"
+                        <input id="tele" type="number" name="tele" required
                             class="border border-slate-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
                     </div>
 
                     <div class="flex flex-col gap-2">
                         <label class="text-slate-600 text-lg max-sm:text-base font-bold" for="date">Date de
                             naissance</label>
-                        <input id="dateN" type="date" name="dateNaissance"
+                        <input id="dateN" type="date" name="dateNaissance" required
                             class="border border-slate-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
                     </div>
 
@@ -277,19 +277,19 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
                     <div class="flex flex-col gap-2">
                         <label class="text-slate-600 text-lg max-sm:text-base font-bold">Date de début</label>
-                        <input type="date" id="date" name="date"
+                        <input type="date" id="date" name="date" required
                             class="border border-slate-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
                     </div>
 
                     <div class="flex flex-col gap-2">
                         <label class="text-slate-600 text-lg max-sm:text-base font-bold">Prix adhérence </label>
-                        <input type="number" id="prix" name="prix"
+                        <input type="number" id="prix" name="prix" required
                             class="border border-slate-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
                     </div>
 
                     <div class="flex flex-col gap-2">
                         <label class="text-slate-600 text-lg max-sm:text-base font-bold">Assurance</label>
-                        <input type="number" id="assurance" name="assurance"
+                        <input type="number" id="assurance" name="assurance" required
                             class="border border-slate-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
                     </div>
 

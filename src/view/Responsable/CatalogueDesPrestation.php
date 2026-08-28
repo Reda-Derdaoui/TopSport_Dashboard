@@ -510,7 +510,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                                                 <img class="h-6 w-6" src="../assets/icons/svgviewer-output.svg"
                                                     alt="modifier">
                                             </button>
-                                            <a href="">
+                                            <a href="../../controller/suprimerTypeActivite.php?Id_TActivite=<?= $type["Id_TActivite"] ?>">
                                                 <button
                                                     class="suprimer cursor-pointer hover:scale-110 transition-transform duration-200">
                                                     <img class="h-6.5 w-6.5 suprimer" src="../assets/icons/delete.svg"

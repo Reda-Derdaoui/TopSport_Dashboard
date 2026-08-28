@@ -73,11 +73,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         </div>
 
         <div class="flex flex-col mt-5 overflow-auto">
-
             <!-- Up bar -->
-
-
-
             <div class="flex justify-between items-center bg-gray-100 gap-5 w-300 p-5 rounded-xl">
                 <div class="flex justify-center items-center gap-3">
                     <h1 class="text-xl text-blue-700 font-bold">TOP SPORT</h1>
