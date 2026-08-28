@@ -135,7 +135,7 @@ $currentDate = date("Y-m-d");
 
         <!-- Sidebar -->
         <!-- Note: changed w-45 to w-64 as 45 isn't standard in Tailwind. Added shrink-0 so it doesn't get squished -->
-        <div id="sidebar" class="flex flex-col h-full gap-3 w-64 p-4 shrink-0 bg-gray-100
+        <div id="sidebar" class="flex flex-col h-full gap-3 w-45 p-4 shrink-0 bg-gray-100
         max-md:fixed max-md:top-0 max-md:left-0 max-md:z-50
         max-md:-translate-x-full max-md:transition-transform max-md:duration-300">
 
