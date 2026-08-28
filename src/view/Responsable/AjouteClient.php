@@ -69,18 +69,19 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <?php endforeach; ?>
         </div>
 
-        <div class="flex flex-col mt-5">
+        <div class="flex flex-col items-center w-full mt-5 max-md:mt-2 max-sm:mt-1 px-4 max-sm:px-2">
             <!-- Up bar -->
 
-            <div class="flex justify-between items-center bg-gray-100 gap-5 w-300 p-5 rounded-xl">
-                <div class="flex justify-center items-center gap-3">
-                    <h1 class="text-xl text-blue-700 font-bold">TOP SPORT</h1>
+            <div
+                class="flex justify-between items-center bg-gray-100 gap-5 w-300 max-2xl:w-full max-sm:flex-col max-sm:justify-center p-5 max-sm:p-4 rounded-xl">
+                <div class="flex justify-center items-center gap-3 max-sm:w-full">
+                    <h1 class="text-xl text-blue-700 font-bold max-sm:text-center">TOP SPORT</h1>
                 </div>
 
-                <div class="flex justify-center items-center gap-5">
-                    <form action="../../controller/logoutController.php" method="POST">
+                <div class="flex justify-center items-center gap-5 max-sm:w-full">
+                    <form action="../../controller/logoutController.php" method="POST" class="max-sm:w-full">
                         <button type="submit" name="logout"
-                            class=" cursor-pointer group flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 ease-in-out bg-linear-to-r from-red-500 to-red-600 rounded-lg shadow-md shadow-red-500/30 hover:from-red-600 hover:to-red-700 hover:shadow-lg hover:-translate-y-0.5 hover:shadow-red-500/40 focus:ring-4 focus:ring-red-500/50 focus:outline-none dark:shadow-red-900/50">
+                            class="cursor-pointer group flex items-center justify-center gap-2 px-5 py-2.5 max-sm:w-full text-sm font-medium text-white transition-all duration-300 ease-in-out bg-linear-to-r from-red-500 to-red-600 rounded-lg shadow-md shadow-red-500/30 hover:from-red-600 hover:to-red-700 hover:shadow-lg hover:-translate-y-0.5 hover:shadow-red-500/40 focus:ring-4 focus:ring-red-500/50 focus:outline-none dark:shadow-red-900/50">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="w-7 h-7 transition-transform duration-300 group-hover:-translate-x-1"
                                 viewBox="0 0 512 512">
@@ -97,7 +98,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
             <!-- Prix check -->
             <?php if (isset($errorPrice)): ?>
-                <div class="flex items-center justify-between w-full max-w-sm gap-3 p-3 mt-2 text-red-800 bg-red-100 border border-red-200 rounded-lg shadow-sm"
+                <div class="flex items-center justify-between w-full max-w-sm max-sm:max-w-full gap-3 p-3 mt-2 text-red-800 bg-red-100 border border-red-200 rounded-lg shadow-sm"
                     role="alert">
                     <span class="flex-1 text-sm font-medium"><?php echo $errorPrice; ?></span>
                     <div class="ml-4 items-center flex">
@@ -115,7 +116,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
             <!-- Assurance check  -->
             <?php if (isset($errorAssurance)): ?>
-                <div class="flex items-center justify-between w-full max-w-sm gap-3 p-3 mt-2 text-red-800 bg-red-100 border border-red-200 rounded-lg shadow-sm"
+                <div class="flex items-center justify-between w-full max-w-sm max-sm:max-w-full gap-3 p-3 mt-2 text-red-800 bg-red-100 border border-red-200 rounded-lg shadow-sm"
                     role="alert">
                     <span class="flex-1 text-sm font-medium"><?php echo $errorAssurance; ?></span>
                     <div class="ml-4 items-center flex">
@@ -133,7 +134,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
             <!-- Date Naissance check -->
             <?php if (isset($errorDateNaissance)): ?>
-                <div class="flex items-center justify-between w-full max-w-sm gap-3 p-3 mt-2 text-red-800 bg-red-100 border border-red-200 rounded-lg shadow-sm"
+                <div class="flex items-center justify-between w-full max-w-sm max-sm:max-w-full gap-3 p-3 mt-2 text-red-800 bg-red-100 border border-red-200 rounded-lg shadow-sm"
                     role="alert">
                     <span class="flex-1 text-sm font-medium"><?php echo $errorDateNaissance; ?></span>
                     <div class="ml-4 items-center flex">
@@ -151,7 +152,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
             <!-- numero de telephone check -->
             <?php if (isset($errorTele)): ?>
-                <div class="flex items-center justify-between w-full max-w-sm gap-3 p-3 mt-2 text-red-800 bg-red-100 border border-red-200 rounded-lg shadow-sm"
+                <div class="flex items-center justify-between w-full max-w-sm max-sm:max-w-full gap-3 p-3 mt-2 text-red-800 bg-red-100 border border-red-200 rounded-lg shadow-sm"
                     role="alert">
                     <span class="flex-1 text-sm font-medium"><?php echo $errorTele; ?></span>
                     <div class="ml-4 items-center flex">
@@ -169,7 +170,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
             <!-- adherent check  -->
             <?php if (isset($error)): ?>
-                <div class="flex items-center justify-between w-full max-w-sm gap-3 p-3 mt-2 text-red-800 bg-red-100 border border-red-200 rounded-lg shadow-sm"
+                <div class="flex items-center justify-between w-full max-w-sm max-sm:max-w-full gap-3 p-3 mt-2 text-red-800 bg-red-100 border border-red-200 rounded-lg shadow-sm"
                     role="alert">
                     <span class="flex-1 text-sm font-medium"><?php echo $error; ?></span>
                     <div class="ml-4 items-center flex">
@@ -184,7 +185,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     </div>
                 </div>
             <?php elseif (isset($validation)): ?>
-                <div class="flex items-center justify-between w-full max-w-sm gap-3 p-3 mt-2 text-green-800 bg-green-100 border border-green-200 rounded-lg shadow-sm"
+                <div class="flex items-center justify-between w-full max-w-sm max-sm:max-w-full gap-3 p-3 mt-2 text-green-800 bg-green-100 border border-green-200 rounded-lg shadow-sm"
                     role="alert">
                     <span class="text-green-600 font-semibold text-md text-center"><?php echo $validation; ?></span>
                     <div class="ml-4 flex items-center ">
@@ -202,7 +203,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
             <!-- nom and prenom check for numbers input -->
             <?php if (isset($numberError)): ?>
-                <div class="flex items-center justify-between w-full max-w-sm gap-3 p-3 mt-2 text-red-800 bg-red-100 border border-red-200 rounded-lg shadow-sm"
+                <div class="flex items-center justify-between w-full max-w-sm max-sm:max-w-full gap-3 p-3 mt-2 text-red-800 bg-red-100 border border-red-200 rounded-lg shadow-sm"
                     role="alert">
                     <span class="flex-1 text-sm font-medium"><?php echo $numberError; ?></span>
                     <div class="ml-4 items-center flex">
@@ -219,37 +220,39 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <?php endif; ?>
 
             <!-- form -->
-            <form class="flex justify-around gap-10 mt-5 p-6 rounded-2xl bg-white shadow-md border border-slate-200"
+            <form
+                class="flex justify-around gap-10 max-lg:flex-col max-lg:gap-6 mt-5 p-6 max-md:p-4 max-sm:p-3 rounded-2xl bg-white shadow-md border border-slate-200 w-300 max-2xl:w-full"
                 action="AjouteClient.php" method="POST">
 
-                <div class="flex flex-col gap-8 w-full">
+                <div class="flex flex-col gap-8 max-lg:gap-6 w-full">
                     <input type="hidden" id="id" name="id">
                     <div class="flex flex-col gap-2">
-                        <label class="text-slate-600 text-lg font-bold" for="prenom">Prénom</label>
+                        <label class="text-slate-600 text-lg max-sm:text-base font-bold" for="prenom">Prénom</label>
                         <input id="prenom" type="text" name="prenom"
                             class="border border-slate-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
                     </div>
 
                     <div class="flex flex-col gap-2">
-                        <label class="text-slate-600 text-lg font-bold" for="nom">Nom</label>
+                        <label class="text-slate-600 text-lg max-sm:text-base font-bold" for="nom">Nom</label>
                         <input id="nom" type="text" name="nom"
                             class="border border-slate-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
                     </div>
 
                     <div class="flex flex-col gap-2">
-                        <label class="text-slate-600 text-lg font-bold" for="tele">Téléphone</label>
+                        <label class="text-slate-600 text-lg max-sm:text-base font-bold" for="tele">Téléphone</label>
                         <input id="tele" type="number" name="tele"
                             class="border border-slate-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
                     </div>
 
                     <div class="flex flex-col gap-2">
-                        <label class="text-slate-600 text-lg font-bold" for="date">Date de naissance</label>
+                        <label class="text-slate-600 text-lg max-sm:text-base font-bold" for="date">Date de
+                            naissance</label>
                         <input id="dateN" type="date" name="dateNaissance"
                             class="border border-slate-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
                     </div>
 
                     <div class="flex flex-col gap-2">
-                        <label class="text-slate-600 text-lg font-bold" for="activite">Activité</label>
+                        <label class="text-slate-600 text-lg max-sm:text-base font-bold" for="activite">Activité</label>
                         <select name="Activite" id="activite"
                             class="cursor-pointer border border-slate-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition bg-white">
                             <?php foreach ($activites as $row): ?>
@@ -259,9 +262,10 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     </div>
                 </div>
 
-                <div class="flex flex-col gap-8 w-full">
+                <div class="flex flex-col gap-8 max-lg:gap-6 w-full">
                     <div class="flex flex-col gap-2">
-                        <label class="text-slate-600 text-lg font-bold" for="type">Type abonnement</label>
+                        <label class="text-slate-600 text-lg max-sm:text-base font-bold" for="type">Type
+                            abonnement</label>
                         <select name="Type_Abon" id="type"
                             class="cursor-pointer border border-slate-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition bg-white">
                             <?php foreach ($typeAbonnement as $row): ?>
@@ -272,25 +276,25 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     </div>
 
                     <div class="flex flex-col gap-2">
-                        <label class="text-slate-600 text-lg font-bold">Date de début</label>
+                        <label class="text-slate-600 text-lg max-sm:text-base font-bold">Date de début</label>
                         <input type="date" id="date" name="date"
                             class="border border-slate-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
                     </div>
 
                     <div class="flex flex-col gap-2">
-                        <label class="text-slate-600 text-lg font-bold">Prix adhérence </label>
+                        <label class="text-slate-600 text-lg max-sm:text-base font-bold">Prix adhérence </label>
                         <input type="number" id="prix" name="prix"
                             class="border border-slate-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
                     </div>
 
                     <div class="flex flex-col gap-2">
-                        <label class="text-slate-600 text-lg font-bold">Assurance</label>
+                        <label class="text-slate-600 text-lg max-sm:text-base font-bold">Assurance</label>
                         <input type="number" id="assurance" name="assurance"
                             class="border border-slate-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
                     </div>
 
                     <input
-                        class="w-33 px-4.5 py-1 text-white text-lg bg-blue-600 rounded-lg shadow-sm hover:bg-blue-700 transition-colors duration-200 cursor-pointer"
+                        class="w-33 max-sm:w-full px-4.5 py-1 text-white text-lg max-sm:text-base bg-blue-600 rounded-lg shadow-sm hover:bg-blue-700 transition-colors duration-200 cursor-pointer"
                         type="submit" value="Ajouter" name="addAdherent">
 
                 </div>
