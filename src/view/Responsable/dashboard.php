@@ -221,8 +221,8 @@ try {
             </div>
 
             <!-- Bottom Section (Aligned with the top width w-300) -->
-            <div class="flex justify-between items-center max-xl:flex-col gap-5 mt-5 mb-5 w-300 max-2xl:w-full">
-                <div
+            <!-- <div class="flex justify-between items-center max-xl:flex-col gap-5 mt-5 mb-5 w-300 max-2xl:w-full"> -->
+                <!-- <div
                     class="flex flex-col items-center justify-center gap-4 bg-white border border-gray-100 rounded-2xl 
                              shadow-sm hover:shadow-md transition-shadow w-135 max-xl:w-full max-sm:h-auto h-70 p-8 max-sm:p-6 text-center">
                     <div class="bg-linear-to-br from-blue-500 to-indigo-600 p-4 rounded-2xl shadow-lg shadow-blue-200">
@@ -236,12 +236,12 @@ try {
                         <h2 class="text-gray-500 font-medium uppercase tracking-widest text-xs mt-3">Total Adhérents
                         </h2>
                     </div>
-                </div>
-                <div style="width: 600px; height: auto;"
+                </div> -->
+                <div style="width: 75rem; height: 240px;"
                     class="bg-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow max-w-full max-xl:w-full! flex items-center justify-center p-2">
                     <canvas id="myChart" class="max-w-full"></canvas>
                 </div>
-            </div>
+            <!-- </div> -->
 
         </div>
     </div>
