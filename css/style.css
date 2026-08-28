@@ -535,6 +535,15 @@
   .max-w-4xl {
     max-width: var(--container-4xl);
   }
+  .max-w-130 {
+    max-width: calc(var(--spacing) * 130);
+  }
+  .max-w-160 {
+    max-width: calc(var(--spacing) * 160);
+  }
+  .max-w-300 {
+    max-width: calc(var(--spacing) * 300);
+  }
   .max-w-full {
     max-width: 100%;
   }
@@ -544,11 +553,47 @@
   .max-w-sm {
     max-width: var(--container-sm);
   }
+  .min-w-25 {
+    min-width: calc(var(--spacing) * 25);
+  }
+  .min-w-27 {
+    min-width: calc(var(--spacing) * 27);
+  }
+  .min-w-27\.5 {
+    min-width: calc(var(--spacing) * 27.5);
+  }
+  .min-w-30 {
+    min-width: calc(var(--spacing) * 30);
+  }
+  .min-w-32 {
+    min-width: calc(var(--spacing) * 32);
+  }
+  .min-w-32\.5 {
+    min-width: calc(var(--spacing) * 32.5);
+  }
+  .min-w-37\.5 {
+    min-width: calc(var(--spacing) * 37.5);
+  }
   .min-w-225 {
     min-width: calc(var(--spacing) * 225);
   }
   .min-w-300 {
     min-width: calc(var(--spacing) * 300);
+  }
+  .min-w-\[100px\] {
+    min-width: 100px;
+  }
+  .min-w-\[110px\] {
+    min-width: 110px;
+  }
+  .min-w-\[120px\] {
+    min-width: 120px;
+  }
+  .min-w-\[130px\] {
+    min-width: 130px;
+  }
+  .min-w-\[150px\] {
+    min-width: 150px;
   }
   .min-w-\[900px\] {
     min-width: 900px;
@@ -597,6 +642,9 @@
   }
   .flex-row-reverse {
     flex-direction: row-reverse;
+  }
+  .flex-wrap {
+    flex-wrap: wrap;
   }
   .items-center {
     align-items: center;
@@ -678,6 +726,9 @@
   }
   .overflow-x-auto {
     overflow-x: auto;
+  }
+  .overflow-x-hidden {
+    overflow-x: hidden;
   }
   .overflow-y-auto {
     overflow-y: auto;
@@ -1519,6 +1570,11 @@
       flex-direction: column;
     }
   }
+  .max-xl\:items-center {
+    @media (width < 80rem) {
+      align-items: center;
+    }
+  }
   .max-xl\:gap-5 {
     @media (width < 80rem) {
       gap: calc(var(--spacing) * 5);
@@ -1578,6 +1634,11 @@
   .max-lg\:w-full {
     @media (width < 64rem) {
       width: 100%;
+    }
+  }
+  .max-lg\:max-w-full {
+    @media (width < 64rem) {
+      max-width: 100%;
     }
   }
   .max-lg\:grid-cols-3 {

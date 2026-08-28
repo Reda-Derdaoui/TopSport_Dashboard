@@ -79,17 +79,18 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
         <!-- Up bar -->
 
-        <div class="flex flex-col justify-around mt-2 overflow-auto">
+        <div class="flex flex-col justify-around mt-2 overflow-x-hidden max-w-full px-4">
 
-            <div class="flex justify-between items-center bg-gray-100 gap-5 w-300 p-5 rounded-xl">
+            <div
+                class="flex justify-between items-center bg-gray-100 gap-5 w-full max-w-300 mx-auto max-lg:flex-col max-lg:items-stretch p-5 rounded-xl shadow-sm">
                 <div class="flex justify-center items-center gap-3">
                     <h1 class="text-xl text-blue-700 font-bold">TOP SPORT</h1>
                 </div>
 
-                <div class="flex justify-center items-center gap-5">
-                    <form action="../../controller/logoutController.php" method="POST">
+                <div class="flex justify-center items-center gap-5 max-lg:w-full">
+                    <form action="../../controller/logoutController.php" method="POST" class="max-lg:w-full">
                         <button type="submit" name="logout"
-                            class=" cursor-pointer group flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 ease-in-out bg-linear-to-r from-red-500 to-red-600 rounded-lg shadow-md shadow-red-500/30 hover:from-red-600 hover:to-red-700 hover:shadow-lg hover:-translate-y-0.5 hover:shadow-red-500/40 focus:ring-4 focus:ring-red-500/50 focus:outline-none dark:shadow-red-900/50">
+                            class="cursor-pointer group flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 ease-in-out bg-linear-to-r from-red-500 to-red-600 rounded-lg shadow-md shadow-red-500/30 hover:from-red-600 hover:to-red-700 hover:shadow-lg hover:-translate-y-0.5 hover:shadow-red-500/40 focus:ring-4 focus:ring-red-500/50 focus:outline-none w-full max-lg:w-full">
                             <svg class="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -102,11 +103,10 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 </div>
             </div>
 
-            <!-- form -->
-            <div class="flex justify-around ">
+            <div class="flex justify-around gap-6 mt-5 max-xl:flex-col max-xl:items-center">
 
-                <!-- type abonnement -->
-                <div class="flex flex-col gap-5 mt-5 p-5 rounded-xl bg-white shadow-md border border-slate-100 w-130">
+                <div
+                    class="flex flex-col gap-5 mt-5 p-5 rounded-xl bg-white shadow-md border border-slate-100 w-full max-w-130 max-lg:max-w-full">
                     <?php if (isset($error2)): ?>
                         <div class="flex items-center justify-between w-full max-w-sm gap-3 p-3 mt-2 text-red-800 bg-red-100 border border-red-200 rounded-lg shadow-sm"
                             role="alert">
@@ -139,63 +139,64 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                             </div>
                         </div>
                     <?php endif; ?>
-                    <form class="w-55 flex items-end gap-5" action="CatalogueDesPrestation.php" method="POST">
-                        <div class="flex flex-col gap-2 ">
+
+                    <form class="w-full flex items-end gap-3 flex-wrap max-md:flex-col max-md:items-stretch"
+                        action="CatalogueDesPrestation.php" method="POST">
+                        <div class="flex flex-col gap-2 flex-1 min-w-37.5">
                             <input type="hidden" name="id" id="id">
-                            <label class="text-slate-700  text-2xl font-bold" for="type_abonnement">Type abonnement:
-                            </label>
+                            <label class="text-slate-700 text-xl font-bold" for="type_abonnement">Type
+                                abonnement:</label>
                             <input
-                                class="border border-slate-300 rounded-xl p-1.5 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition"
+                                class="border border-slate-300 rounded-xl p-1.5 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition w-full"
                                 type="text" id="type_abonnement" name="typeAbonnement">
                         </div>
-                        <input
-                            class="px-4.5 py-1 text-white text-lg bg-blue-600 rounded-lg shadow-sm hover:bg-blue-700 transition-colors duration-200 cursor-pointer"
-                            type="submit" value="Ajouter" name="add_type">
-
-                        <input
-                            class="px-4.5 py-1 text-white text-lg bg-emerald-600 rounded-lg shadow-sm hover:bg-emerald-700 transition-colors duration-200 cursor-pointer"
-                            type="submit" value="Modifier" name="update_type">
+                        <div class="flex gap-2 max-md:justify-between">
+                            <input
+                                class="px-4.5 py-1 text-white text-lg bg-blue-600 rounded-lg shadow-sm hover:bg-blue-700 transition-colors duration-200 cursor-pointer"
+                                type="submit" value="Ajouter" name="add_type">
+                            <input
+                                class="px-4.5 py-1 text-white text-lg bg-emerald-600 rounded-lg shadow-sm hover:bg-emerald-700 transition-colors duration-200 cursor-pointer"
+                                type="submit" value="Modifier" name="update_type">
+                        </div>
                     </form>
 
-                    <table class="table-auto w-full text-center border-collapse">
-                        <thead class="bg-slate-50 border-b-2 border-slate-200">
-                            <tr>
-                                <td class="text-sm font-bold p-2 text-slate-700">Type abonnement</td>
-                                <td class="text-sm font-bold p-2 text-slate-700">Action</td>
-                            </tr>
-                        </thead>
-
-                        <tbody class="divide-y divide-slate-100">
-                            <?php foreach ($typeAbonnement as $type): ?>
-                                <tr class="hover:bg-slate-50 transition-colors duration-200">
-                                    <td class="p-2 text-slate-700"><?= $type["Libelle_TAbonnement"] ?></td>
-                                    <td class=" flex items-center justify-center gap-2 p-1">
-
-                                        <button data-id="<?= $type["Id_TAbonnement"] ?>"
-                                            data-name="<?= htmlspecialchars($type["Libelle_TAbonnement"]) ?>"
-                                            class="editBtn cursor-pointer hover:scale-110 transition-transform duration-200">
-                                            <img class="h-6 w-6" src="../assets/icons/svgviewer-output.svg" alt="modifier">
-                                        </button>
-
-                                        <a
-                                            href="../../controller/suprimerTypeAbonnement.php?Id_TAbonnement=<?= $type["Id_TAbonnement"] ?>">
-                                            <button
-                                                class="suprimer cursor-pointer hover:scale-110 transition-transform duration-200">
-                                                <img class="h-7 w-7 suprimer" src="../assets/icons/delete.svg"
-                                                    alt="suprimer">
-                                            </button>
-                                        </a>
-                                    </td>
+                    <div class="overflow-x-auto w-full">
+                        <table class="table-auto w-full text-center border-collapse">
+                            <thead class="bg-slate-50 border-b-2 border-slate-200">
+                                <tr>
+                                    <td class="text-sm font-bold p-2 text-slate-700">Type abonnement</td>
+                                    <td class="text-sm font-bold p-2 text-slate-700">Action</td>
                                 </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <?php foreach ($typeAbonnement as $type): ?>
+                                    <tr class="hover:bg-slate-50 transition-colors duration-200">
+                                        <td class="p-2 text-slate-700"><?= $type["Libelle_TAbonnement"] ?></td>
+                                        <td class="flex items-center justify-center gap-2 p-1">
+                                            <button data-id="<?= $type["Id_TAbonnement"] ?>"
+                                                data-name="<?= htmlspecialchars($type["Libelle_TAbonnement"]) ?>"
+                                                class="editBtn cursor-pointer hover:scale-110 transition-transform duration-200">
+                                                <img class="h-6 w-6" src="../assets/icons/svgviewer-output.svg"
+                                                    alt="modifier">
+                                            </button>
+                                            <a
+                                                href="../../controller/suprimerTypeAbonnement.php?Id_TAbonnement=<?= $type["Id_TAbonnement"] ?>">
+                                                <button
+                                                    class="suprimer cursor-pointer hover:scale-110 transition-transform duration-200">
+                                                    <img class="h-7 w-7 suprimer" src="../assets/icons/delete.svg"
+                                                        alt="suprimer">
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
-                <!--  assurance  -->
-
-                <div class="flex flex-col gap-5 mt-5 p-5 rounded-xl bg-white shadow-md border border-slate-100 w-160">
-
+                <div
+                    class="flex flex-col gap-5 mt-5 p-5 rounded-xl bg-white shadow-md border border-slate-100 w-full max-w-160 max-lg:max-w-full">
                     <?php if (isset($error3)): ?>
                         <div class="flex items-center justify-between w-full max-w-sm gap-3 p-3 mt-2 text-red-800 bg-red-100 border border-red-200 rounded-lg shadow-sm"
                             role="alert">
@@ -228,82 +229,84 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                             </div>
                         </div>
                     <?php endif; ?>
-                    <form class="w-55 flex items-end gap-5" action="CatalogueDesPrestation.php" method="POST">
 
-                        <div class="flex flex-col gap-2 ">
+                    <form class="w-full flex items-end gap-3 flex-wrap max-md:flex-col max-md:items-stretch"
+                        action="CatalogueDesPrestation.php" method="POST">
+                        <div class="flex flex-col gap-2 flex-1 min-w-32.5">
                             <input type="hidden" name="id2" id="id2">
-                            <h1 class=" text-2xl font-bold text-slate-700">Assurance</h1>
-                            <label class="font-semibold text-slate-700 text-sm" for="assurance">Date de début: </label>
+                            <h1 class="text-2xl font-bold text-slate-700">Assurance</h1>
+                            <label class="font-semibold text-slate-700 text-sm" for="dateDEbut">Date de début: </label>
                             <input
-                                class="border border-slate-300 rounded-xl p-1.5 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition"
+                                class="border border-slate-300 rounded-xl p-1.5 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition w-full"
                                 type="date" id="dateDEbut" name="dateDebut">
                         </div>
 
-                        <div class="flex flex-col gap-2 mt-9">
+                        <div class="flex flex-col gap-2 flex-1 min-w-25">
                             <label class="font-semibold text-slate-700 text-sm" for="prix">Prix: </label>
                             <input
-                                class="border border-slate-300 rounded-xl p-1.5 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition"
+                                class="border border-slate-300 rounded-xl p-1.5 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition w-full"
                                 type="number" id="prix" name="prix">
                         </div>
 
-                        <input
-                            class="px-4.5 py-1 text-white text-lg bg-blue-600 rounded-lg shadow-sm hover:bg-blue-700 transition-colors duration-200 cursor-pointer"
-                            type="submit" value="Ajouter" name="add">
-
-                        <input
-                            class="px-4.5 py-1 text-white text-lg bg-emerald-600 rounded-lg shadow-sm hover:bg-emerald-700 transition-colors duration-200 cursor-pointer"
-                            type="submit" value="Modifier" name="update">
-
+                        <div class="flex gap-2 max-md:justify-between">
+                            <input
+                                class="px-4.5 py-1 text-white text-lg bg-blue-600 rounded-lg shadow-sm hover:bg-blue-700 transition-colors duration-200 cursor-pointer"
+                                type="submit" value="Ajouter" name="add">
+                            <input
+                                class="px-4.5 py-1 text-white text-lg bg-emerald-600 rounded-lg shadow-sm hover:bg-emerald-700 transition-colors duration-200 cursor-pointer"
+                                type="submit" value="Modifier" name="update">
+                        </div>
                     </form>
-                    <table class="table-auto w-full text-center border-collapse">
-                        <thead class="bg-slate-50 border-b-2 border-slate-200">
-                            <tr>
-                                <td class="text-sm font-bold p-2 text-slate-700">Date de début</td>
-                                <td class="text-sm font-bold p-2 text-slate-700">Date de fin</td>
-                                <td class="text-sm font-bold p-2 text-slate-700">Prix</td>
-                                <td class="text-sm font-bold p-2 text-slate-700">Action</td>
-                            </tr>
-                        </thead>
 
-                        <tbody class="divide-y divide-slate-100">
-                            <?php foreach ($assurances as $assurance): ?>
-                                <tr class="hover:bg-slate-50 transition-colors duration-200">
-                                    <td class="p-2 font-medium text-slate-800">
-                                        <?= (new DateTime($assurance["DateDebut"]))->format('d-m-Y') ?>
-                                    </td>
-                                    <td class="p-2 font-medium text-slate-800">
-                                        <?= (new DateTime($assurance["DateFin"]))->format('d-m-Y') ?>
-                                    </td>
-                                    <td class="p-2 text-slate-600"><?= $assurance["Prix"] . ' Dh' ?></td>
-                                    <td class="flex items-center justify-center gap-2 p-1">
-
-                                        <button data-id="<?= $assurance["Id_Assurance"] ?>"
-                                            data-date="<?= $assurance["DateDebut"] ?>" data-prix="<?= $assurance["Prix"] ?>"
-                                            class="editBtn2 cursor-pointer hover:scale-110 transition-transform duration-200">
-                                            <img class="h-6 w-6" src="../assets/icons/svgviewer-output.svg" alt="modifier">
-                                        </button>
-
-                                        <a
-                                            href="../../controller/suprimerAssurance.php?Id_Assurance=<?= $assurance["Id_Assurance"] ?>">
-                                            <button
-                                                class="suprimer cursor-pointer hover:scale-110 transition-transform duration-200">
-                                                <img class="h-7 w-7 suprimer" src="../assets/icons/delete.svg"
-                                                    alt="suprimer">
-                                            </button>
-                                        </a>
-                                    </td>
+                    <div class="overflow-x-auto w-full">
+                        <table class="table-auto w-full text-center border-collapse">
+                            <thead class="bg-slate-50 border-b-2 border-slate-200">
+                                <tr>
+                                    <td class="text-sm font-bold p-2 text-slate-700">Date de début</td>
+                                    <td class="text-sm font-bold p-2 text-slate-700">Date de fin</td>
+                                    <td class="text-sm font-bold p-2 text-slate-700">Prix</td>
+                                    <td class="text-sm font-bold p-2 text-slate-700">Action</td>
                                 </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <?php foreach ($assurances as $assurance): ?>
+                                    <tr class="hover:bg-slate-50 transition-colors duration-200">
+                                        <td class="p-2 font-medium text-slate-800">
+                                            <?= (new DateTime($assurance["DateDebut"]))->format('d-m-Y') ?>
+                                        </td>
+                                        <td class="p-2 font-medium text-slate-800">
+                                            <?= (new DateTime($assurance["DateFin"]))->format('d-m-Y') ?>
+                                        </td>
+                                        <td class="p-2 text-slate-600"><?= $assurance["Prix"] . ' Dh' ?></td>
+                                        <td class="flex items-center justify-center gap-2 p-1">
+                                            <button data-id="<?= $assurance["Id_Assurance"] ?>"
+                                                data-date="<?= $assurance["DateDebut"] ?>"
+                                                data-prix="<?= $assurance["Prix"] ?>"
+                                                class="editBtn2 cursor-pointer hover:scale-110 transition-transform duration-200">
+                                                <img class="h-6 w-6" src="../assets/icons/svgviewer-output.svg"
+                                                    alt="modifier">
+                                            </button>
+                                            <a
+                                                href="../../controller/suprimerAssurance.php?Id_Assurance=<?= $assurance["Id_Assurance"] ?>">
+                                                <button
+                                                    class="suprimer cursor-pointer hover:scale-110 transition-transform duration-200">
+                                                    <img class="h-7 w-7 suprimer" src="../assets/icons/delete.svg"
+                                                        alt="suprimer">
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
-            <div class="flex flex-row-reverse justify-around">
+            <div class="flex flex-row-reverse justify-around gap-6 mt-5 max-xl:flex-col max-xl:items-center">
 
-                <!-- activite -->
-
-                <div class="flex flex-col gap-5 mt-5 p-5 rounded-xl bg-white shadow-md border border-slate-100 w-160">
+                <div
+                    class="flex flex-col gap-5 mt-5 p-5 rounded-xl bg-white shadow-md border border-slate-100 w-full max-w-160 max-lg:max-w-full">
                     <?php if (isset($error)): ?>
                         <div class="flex items-center justify-between w-full max-w-sm gap-3 p-3 mt-2 text-red-800 bg-red-100 border border-red-200 rounded-lg shadow-sm"
                             role="alert">
@@ -335,94 +338,92 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                             </div>
                         </div>
                     <?php endif; ?>
-                    <form class="w-55 flex items-end gap-5" action="CatalogueDesPrestation.php" method="POST">
-                        <div class="flex flex-col gap-2">
+
+                    <form class="w-full flex items-end gap-3 flex-wrap max-md:flex-col max-md:items-stretch"
+                        action="CatalogueDesPrestation.php" method="POST">
+                        <div class="flex flex-col gap-2 flex-1 min-w-30">
                             <input type="hidden" name="id" id="id3">
-                            <label class="text-slate-700  text-2xl font-bold" for="activite">Activité: </label>
+                            <label class="text-slate-700 text-2xl font-bold" for="activite">Activité: </label>
                             <input
-                                class="border border-slate-300 rounded-xl p-1.5 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition"
+                                class="border border-slate-300 rounded-xl p-1.5 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition w-full"
                                 type="text" id="activite" name="activite">
                         </div>
 
-                        <div class="flex flex-col gap-2">
+                        <div class="flex flex-col gap-2 flex-1 min-w-27.5">
                             <h1 class="font-semibold text-slate-700 text-sm">Entraîneurs: </h1>
                             <select id="entraineur" name="entraineur"
-                                class="cursor-pointer border border-slate-300 rounded-lg w-30 p-1 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition bg-white">
+                                class="cursor-pointer border border-slate-300 rounded-lg w-full p-1 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition bg-white">
                                 <?php foreach ($entraineurs as $entraineur): ?>
                                     <option value="<?= $entraineur["Prenom"] ?>"><?= $entraineur["Prenom"] ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
 
-                        <div class="flex flex-col gap-2">
+                        <div class="flex flex-col gap-2 flex-1 min-w-27.5">
                             <h1 class="font-semibold text-slate-700 text-sm">Assurances: </h1>
                             <select id="assu" name="assu"
-                                class="cursor-pointer border border-slate-300 rounded-lg w-30 p-1 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition bg-white">
+                                class="cursor-pointer border border-slate-300 rounded-lg w-full p-1 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition bg-white">
                                 <?php foreach ($ass as $as): ?>
                                     <option value="<?= $as["Prix"] ?>"><?= $as["Prix"] ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
 
-                        <div class="flex flex-col-reverse gap-2.5">
+                        <div class="flex gap-2 max-md:justify-between">
                             <input
                                 class="px-4.5 py-1 text-white text-lg bg-blue-600 rounded-lg shadow-sm hover:bg-blue-700 transition-colors duration-200 cursor-pointer"
                                 type="submit" value="Ajouter" name="add_act">
-
                             <input
                                 class="px-4.5 py-1 text-white text-lg bg-emerald-600 rounded-lg shadow-sm hover:bg-emerald-700 transition-colors duration-200 cursor-pointer"
                                 type="submit" value="Modifier" name="update_act">
                         </div>
                     </form>
 
-                    <table class="table-auto w-full text-center border-collapse">
-                        <thead class="bg-slate-50 border-b-2 border-slate-200">
-                            <tr>
-                                <td class="p-2 text-sm font-bold text-slate-700">Activité</td>
-                                <td class="p-2 text-sm font-bold text-slate-700">Assurance prix</td>
-                                <td class="p-2 text-sm font-bold text-slate-700">Entraîneur</td>
-                                <td class="p-2 text-sm font-bold text-slate-700">Responsable</td>
-                                <td class="p-2 text-sm font-bold text-slate-700">Action</td>
-                            </tr>
-                        </thead>
-
-                        <tbody class="divide-y divide-slate-100">
-                            <?php foreach ($activites as $activite): ?>
-                                <tr class="hover:bg-slate-50 transition-colors duration-200">
-                                    <td class="p-2 font-medium text-slate-800"><?= $activite["Libelle_Activite"] ?></td>
-                                    <td class="p-2 text-slate-600"><?= $activite["assurance_prix"] . ' Dh' ?></td>
-                                    <td class="p-2 text-slate-600"><?= $activite["entraineur_prenom"] ?></td>
-                                    <td class="p-2 text-slate-600"><?= $activite["responsable_prenom"] ?></td>
-                                    <td class="flex items-center justify-center gap-3 p-2">
-
-                                        <button data-id="<?= $activite["Id_Activite"] ?>"
-                                            data-name="<?= $activite["Libelle_Activite"] ?>"
-                                            data-ass="<?= $activite["assurance_prix"] ?>"
-                                            data-entr="<?= $activite["entraineur_prenom"] ?>"
-                                            class="editBtn3 cursor-pointer hover:scale-110 transition-transform duration-200">
-                                            <img class="h-6 w-6" src="../assets/icons/svgviewer-output.svg" alt="modifier">
-                                        </button>
-
-                                        <a
-                                            href="../../controller/suprimerActivite.php?Id_Activite=<?= $activite["Id_Activite"] ?>">
-                                            <button
-                                                class="suprimer cursor-pointer hover:scale-110 transition-transform duration-200">
-                                                <img class="h-7 w-7 suprimer" src="../assets/icons/delete.svg"
-                                                    alt="suprimer">
-                                            </button>
-                                        </a>
-                                    </td>
+                    <div class="overflow-x-auto w-full">
+                        <table class="table-auto w-full text-center border-collapse">
+                            <thead class="bg-slate-50 border-b-2 border-slate-200">
+                                <tr>
+                                    <td class="p-2 text-sm font-bold text-slate-700">Activité</td>
+                                    <td class="p-2 text-sm font-bold text-slate-700">Assurance prix</td>
+                                    <td class="p-2 text-sm font-bold text-slate-700">Entraîneur</td>
+                                    <td class="p-2 text-sm font-bold text-slate-700">Responsable</td>
+                                    <td class="p-2 text-sm font-bold text-slate-700">Action</td>
                                 </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <?php foreach ($activites as $activite): ?>
+                                    <tr class="hover:bg-slate-50 transition-colors duration-200">
+                                        <td class="p-2 font-medium text-slate-800"><?= $activite["Libelle_Activite"] ?></td>
+                                        <td class="p-2 text-slate-600"><?= $activite["assurance_prix"] . ' Dh' ?></td>
+                                        <td class="p-2 text-slate-600"><?= $activite["entraineur_prenom"] ?></td>
+                                        <td class="p-2 text-slate-600"><?= $activite["responsable_prenom"] ?></td>
+                                        <td class="flex items-center justify-center gap-3 p-2">
+                                            <button data-id="<?= $activite["Id_Activite"] ?>"
+                                                data-name="<?= $activite["Libelle_Activite"] ?>"
+                                                data-ass="<?= $activite["assurance_prix"] ?>"
+                                                data-entr="<?= $activite["entraineur_prenom"] ?>"
+                                                class="editBtn3 cursor-pointer hover:scale-110 transition-transform duration-200">
+                                                <img class="h-6 w-6" src="../assets/icons/svgviewer-output.svg"
+                                                    alt="modifier">
+                                            </button>
+                                            <a
+                                                href="../../controller/suprimerActivite.php?Id_Activite=<?= $activite["Id_Activite"] ?>">
+                                                <button
+                                                    class="suprimer cursor-pointer hover:scale-110 transition-transform duration-200">
+                                                    <img class="h-7 w-7 suprimer" src="../assets/icons/delete.svg"
+                                                        alt="suprimer">
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
-
-                <!-- type activite -->
-
-                <div class="flex flex-col gap-5 mt-5 p-5 rounded-xl bg-white shadow-md border border-slate-100 w-130">
-
+                <div
+                    class="flex flex-col gap-5 mt-5 p-5 rounded-xl bg-white shadow-md border border-slate-100 w-full max-w-130 max-lg:max-w-full">
                     <?php if (isset($error4)): ?>
                         <div class="flex items-center justify-between w-full max-w-sm gap-3 p-3 mt-2 text-red-800 bg-red-100 border border-red-200 rounded-lg shadow-sm"
                             role="alert">
@@ -455,21 +456,21 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                             </div>
                         </div>
                     <?php endif; ?>
-                    <form class="w-50 flex items-end gap-5" action="CatalogueDesPrestation.php" method="POST">
 
-                        <div class="flex flex-col gap-2">
+                    <form class="w-full flex items-end gap-3 flex-wrap max-md:flex-col max-md:items-stretch"
+                        action="CatalogueDesPrestation.php" method="POST">
+                        <div class="flex flex-col gap-2 flex-1 min-w-30">
                             <input type="hidden" name="id4" id="id4">
-                            <label class="text-slate-700  text-2xl font-bold" for="typeActivite">Type d'activité:
-                            </label>
+                            <label class="text-slate-700 text-2xl font-bold" for="typeActivite">Type d'activité:</label>
                             <input
-                                class="border border-slate-300 rounded-xl p-1.5 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition"
+                                class="border border-slate-300 rounded-xl p-1.5 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition w-full"
                                 type="text" id="typeActivite" name="typeActivte">
                         </div>
 
-                        <div class="flex flex-col gap-2">
+                        <div class="flex flex-col gap-2 flex-1 min-w-27.5">
                             <h1 class="font-semibold text-slate-700 text-sm">Activité: </h1>
                             <select id="act" name="act"
-                                class="cursor-pointer border border-slate-300 rounded-lg w-30 p-1 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition bg-white">
+                                class="cursor-pointer border border-slate-300 rounded-lg w-full p-1 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition bg-white">
                                 <?php foreach ($activites as $act): ?>
                                     <option value="<?= $act["Libelle_Activite"] ?>"> <?= $act["Libelle_Activite"] ?>
                                     </option>
@@ -477,54 +478,53 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                             </select>
                         </div>
 
-                        <div class="flex flex-col-reverse gap-2.5">
+                        <div class="flex gap-2 max-md:justify-between">
                             <input
-                                class=" px-4.5 py-1  text-white text-lg bg-blue-600 rounded-lg shadow-sm hover:bg-blue-700 transition-colors duration-200 cursor-pointer"
+                                class="px-4.5 py-1 text-white text-lg bg-blue-600 rounded-lg shadow-sm hover:bg-blue-700 transition-colors duration-200 cursor-pointer"
                                 type="submit" value="Ajouter" name="addTypeActivite">
-
                             <input
                                 class="px-4.5 py-1 text-white text-lg bg-emerald-600 rounded-lg shadow-sm hover:bg-emerald-700 transition-colors duration-200 cursor-pointer"
                                 type="submit" value="Modifier" name="updateTypeActivite">
                         </div>
-
                     </form>
 
-                    <table class="table-auto w-full text-center border-collapse">
-                        <thead class="bg-slate-50 border-b-2 border-slate-200">
-                            <tr>
-                                <td class="text-sm font-bold p-2 text-slate-700">Type d'activité</td>
-                                <td class="text-sm font-bold p-2 text-slate-700">Activité</td>
-                                <td class="text-sm font-bold p-2 text-slate-700">Action</td>
-                            </tr>
-                        </thead>
-
-                        <tbody class="divide-y divide-slate-100">
-                            <?php foreach ($types as $type): ?>
-                                <tr class="hover:bg-slate-50 transition-colors duration-200">
-                                    <td class="p-2 font-medium text-slate-800"><?= $type["Libelle_TActivite"] ?></td>
-                                    <td class="p-2 text-slate-600"><?= $type["activite_nom"] ?></td>
-                                    <td class="flex items-center justify-center gap-3 p-2">
-
-                                        <button data-id="<?= $type["Id_TActivite"] ?>"
-                                            data-name="<?= $type["Libelle_TActivite"] ?>"
-                                            data-Acti="<?= $type["activite_nom"] ?>"
-                                            class="editBtn4 cursor-pointer hover:scale-110 transition-transform duration-200">
-                                            <img class="h-6 w-6" src="../assets/icons/svgviewer-output.svg" alt="modifier">
-                                        </button>
-
-                                        <a href="">
-                                            <button
-                                                class="suprimer cursor-pointer hover:scale-110 transition-transform duration-200">
-                                                <img class="h-6.5 w-6.5  suprimer" src="../assets/icons/delete.svg"
-                                                    alt="suprimer">
-                                            </button>
-                                        </a>
-                                    </td>
+                    <div class="overflow-x-auto w-full">
+                        <table class="table-auto w-full text-center border-collapse">
+                            <thead class="bg-slate-50 border-b-2 border-slate-200">
+                                <tr>
+                                    <td class="text-sm font-bold p-2 text-slate-700">Type d'activité</td>
+                                    <td class="text-sm font-bold p-2 text-slate-700">Activité</td>
+                                    <td class="text-sm font-bold p-2 text-slate-700">Action</td>
                                 </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <?php foreach ($types as $type): ?>
+                                    <tr class="hover:bg-slate-50 transition-colors duration-200">
+                                        <td class="p-2 font-medium text-slate-800"><?= $type["Libelle_TActivite"] ?></td>
+                                        <td class="p-2 text-slate-600"><?= $type["activite_nom"] ?></td>
+                                        <td class="flex items-center justify-center gap-3 p-2">
+                                            <button data-id="<?= $type["Id_TActivite"] ?>"
+                                                data-name="<?= $type["Libelle_TActivite"] ?>"
+                                                data-Acti="<?= $type["activite_nom"] ?>"
+                                                class="editBtn4 cursor-pointer hover:scale-110 transition-transform duration-200">
+                                                <img class="h-6 w-6" src="../assets/icons/svgviewer-output.svg"
+                                                    alt="modifier">
+                                            </button>
+                                            <a href="">
+                                                <button
+                                                    class="suprimer cursor-pointer hover:scale-110 transition-transform duration-200">
+                                                    <img class="h-6.5 w-6.5 suprimer" src="../assets/icons/delete.svg"
+                                                        alt="suprimer">
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
