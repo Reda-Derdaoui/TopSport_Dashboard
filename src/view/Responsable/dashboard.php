@@ -86,10 +86,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link
-        rel="icon"
-        type="image/x-icon"
-        href="../assets/images/top-sport-noBack.png" />
+    <link rel="icon" type="image/x-icon" href="../assets/images/top-sport-noBack.png" />
     <link rel="stylesheet" href="../../../css/style.css">
     <title>Home</title>
 </head>
@@ -98,55 +95,65 @@ try {
     <div class="flex gap-10 h-screen bg-blue-100 ">
 
         <!-- side bar -->
-        <div class="flex flex-col h-screen gap-3 w-40 p-2 bg-gray-100">
-            <div class="flex items-center justify-center gap-5 border-b-2 border-blue-200 ">
-                <img class="h-15 mb-10 "
-                    src="../assets/images/top-sport-noBack.png"
+        <!-- Mobile menu button -->
+        <button id="sidebarToggle" type="button" class="hidden max-md:flex fixed top-4 left-4 z-50
+        items-center justify-center w-10 h-10
+        bg-blue-500 text-white rounded-xl shadow-md
+        hover:bg-blue-600 transition-colors duration-200" aria-label="Ouvrir le menu" aria-expanded="false">
+            <span class="text-2xl">☰</span>
+        </button>
+
+        <!-- Overlay -->
+        <div id="sidebarOverlay" class="hidden max-md:fixed max-md:inset-0 max-md:bg-black/30 max-md:z-40">
+        </div>
+
+        <!-- Sidebar -->
+        <!-- Note: changed w-45 to w-64 as 45 isn't standard in Tailwind. Added shrink-0 so it doesn't get squished -->
+        <div id="sidebar" class="flex flex-col h-full gap-3 w-45 p-4 shrink-0 bg-gray-100
+        max-md:fixed max-md:top-0 max-md:left-0 max-md:z-50
+        max-md:-translate-x-full max-md:transition-transform max-md:duration-300">
+
+            <div class="flex items-center justify-center gap-5 border-b-2 border-blue-200 pb-2">
+                <img class="h-12 mb-8 object-contain max-md:mb-4" src="../assets/images/top-sport-noBack.png"
                     alt="TopSport">
             </div>
 
             <?php foreach ($sideBarView as $sideBar): ?>
-
-                <div class="flex items-center gap-3 hover:bg-blue-100 hover:rounded-2xl px-4 py-2.5
+                <div class="flex items-center gap-3 hover:bg-blue-100 hover:rounded-2xl px-4 py-2.5 transition-colors
             <?= (basename($sideBar["link"]) == $currentPage)
-                    ? 'bg-blue-200 rounded-2xl'
-                    : 'hover:bg-blue-100 hover:rounded-2xl' ?>
-                ">
-                    <a href=<?= $sideBar["link"] ?>>
-                        <img class="h-6 w-6"
-                            src=<?= $sideBar["img"] ?>
-                            alt="home">
+                ? 'bg-blue-200 rounded-2xl'
+                : 'hover:bg-blue-100 hover:rounded-2xl' ?>">
+
+                    <a href="<?= $sideBar["link"] ?>" class="shrink-0">
+                        <img class="h-6 w-6" src="<?= $sideBar["img"] ?>" alt="home">
                     </a>
-                    <a class="font-medium hover:text-blue-700 text-center text-sm "
-                        href=<?= $sideBar["link"] ?>> <?= $sideBar["name"] ?>
+
+                    <a class="font-medium hover:text-blue-700 text-center text-sm" href="<?= $sideBar["link"] ?>">
+                        <?= $sideBar["name"] ?>
                     </a>
                 </div>
-            <?php endforeach;  ?>
-
+            <?php endforeach; ?>
         </div>
 
 
-        <div class="flex flex-col gap-5 mt-2 mr-5 overflow-auto">
+        <div class="flex flex-col items-center w-full gap-5 mt-2 mr-5 max-md:mr-2 max-sm:mr-0 overflow-auto">
             <!-- Up bar -->
-            <div class="flex justify-between items-center bg-gray-100 gap-5 w-300 p-5 rounded-xl ">
+            <div
+                class="flex justify-between items-center bg-gray-100 gap-5 w-300 max-2xl:w-full max-sm:flex-col max-sm:justify-center p-5 rounded-xl">
                 <div class="flex justify-center items-center gap-3">
-                    <h1 class="text-xl text-blue-700 font-bold">TOP SPORT</h1>
+                    <h1 class="text-xl text-blue-700 font-bold max-sm:text-center">TOP SPORT</h1>
                 </div>
 
-                <div class="flex justify-center items-center gap-5 ">
-                    <form action="../../controller/logoutController.php" method="POST">
-                        <button
-                            type="submit"
-                            name="logout"
-                            class=" cursor-pointer group flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 ease-in-out bg-linear-to-r from-red-500 to-red-600 rounded-lg shadow-md shadow-red-500/30 hover:from-red-600 hover:to-red-700 hover:shadow-lg hover:-translate-y-0.5 hover:shadow-red-500/40 focus:ring-4 focus:ring-red-500/50 focus:outline-none dark:shadow-red-900/50">
+                <div class="flex justify-center items-center gap-5 max-sm:w-full">
+                    <form action="../../controller/logoutController.php" method="POST" class="max-sm:w-full">
+                        <button type="submit" name="logout"
+                            class="cursor-pointer group flex items-center justify-center gap-2 px-5 py-2.5 max-sm:w-full text-sm font-medium text-white transition-all duration-300 ease-in-out bg-linear-to-r from-red-500 to-red-600 rounded-lg shadow-md shadow-red-500/30 hover:from-red-600 hover:to-red-700 hover:shadow-lg hover:-translate-y-0.5 hover:shadow-red-500/40 focus:ring-4 focus:ring-red-500/50 focus:outline-none dark:shadow-red-900/50">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="w-7 h-7 transition-transform duration-300 group-hover:-translate-x-1"
                                 viewBox="0 0 512 512">
-                                <path d="M304 336v40a40 40 0 01-40 40H104a40 40 0 01-40-40V136a40 40 0 0140-40h152c22.09 0 48 17.91 48 40v40M368 336l80-80-80-80M176 256h256"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
+                                <path
+                                    d="M304 336v40a40 40 0 01-40 40H104a40 40 0 01-40-40V136a40 40 0 0140-40h152c22.09 0 48 17.91 48 40v40M368 336l80-80-80-80M176 256h256"
+                                    fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="32" />
                             </svg>
                             Se déconnecter
@@ -156,8 +163,8 @@ try {
             </div>
 
             <!-- Charts  -->
-            <div class="bg-white p-6 border border-gray-100 rounded-2xl 
-                    shadow-sm hover:shadow-md transition-shadow w-300 overflow-auto h-80">
+            <div class="bg-white p-6 max-sm:p-4 border border-gray-100 rounded-2xl 
+                    shadow-sm hover:shadow-md transition-shadow w-300 max-2xl:w-full overflow-auto h-80">
                 <h2 class="text-xl font-bold mb-3">
                     Expire bientôt
                 </h2>
@@ -169,7 +176,8 @@ try {
                     <?php foreach ($adherents as $adherent): ?>
                         <?php $dateFin = new DateTime($adherent["DateFin"]) ?>
 
-                        <div class="flex items-center justify-between border-b pb-3">
+                        <div
+                            class="flex items-center justify-between max-sm:flex-col max-sm:items-start max-sm:gap-3 border-b pb-3">
                             <div>
                                 <p class="font-semibold">
                                     <?= htmlspecialchars($adherent["Prenom"]) ?>
@@ -182,7 +190,7 @@ try {
                                 </p>
                             </div>
 
-                            <div class="flex gap-5 items-center">
+                            <div class="flex gap-5 items-center max-sm:w-full max-sm:justify-between">
                                 <?php if ($dateFin->format("Y/m/d") < $today->format("Y/m/d")): ?>
 
                                     <span class="bg-red-600 text-red-100 text-sm px-3 py-1 rounded-full">
@@ -212,27 +220,50 @@ try {
                 </div>
             </div>
 
-            <div class="flex justify-between gap-5 mt-5 mb-5 mr-5">
-                <div class="flex flex-col items-center justify-center gap-4 bg-white border border-gray-100 rounded-2xl 
-                             shadow-sm hover:shadow-md transition-shadow w-135 h-70 p-8 text-center">
+            <!-- Bottom Section (Aligned with the top width w-300) -->
+            <div class="flex justify-between items-center max-xl:flex-col gap-5 mt-5 mb-5 w-300 max-2xl:w-full">
+                <div
+                    class="flex flex-col items-center justify-center gap-4 bg-white border border-gray-100 rounded-2xl 
+                             shadow-sm hover:shadow-md transition-shadow w-135 max-xl:w-full max-sm:h-auto h-70 p-8 max-sm:p-6 text-center">
                     <div class="bg-linear-to-br from-blue-500 to-indigo-600 p-4 rounded-2xl shadow-lg shadow-blue-200">
-                        <img class="h-12 w-12 invert brightness-0" src="../assets/icons/people-outline.svg" alt="people">
+                        <img class="h-12 w-12 max-sm:h-8 max-sm:w-8 invert brightness-0"
+                            src="../assets/icons/people-outline.svg" alt="people">
                     </div>
                     <div class="mt-2">
-                        <p class="text-5xl font-black text-gray-900 tracking-tight">
+                        <p class="text-5xl max-sm:text-4xl font-black text-gray-900 tracking-tight">
                             <?= $totalAdherents ?>
                         </p>
-                        <h2 class="text-gray-500 font-medium uppercase tracking-widest text-xs mt-3">Total Adhérents</h2>
+                        <h2 class="text-gray-500 font-medium uppercase tracking-widest text-xs mt-3">Total Adhérents
+                        </h2>
                     </div>
                 </div>
-                <div style="width: 600px; height: auto;" class="bg-gray-100  rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                    <canvas id="myChart"></canvas>
+                <div style="width: 600px; height: auto;"
+                    class="bg-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow max-w-full max-xl:w-full! flex items-center justify-center p-2">
+                    <canvas id="myChart" class="max-w-full"></canvas>
                 </div>
             </div>
 
-
         </div>
     </div>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        function toggleSidebar() {
+            sidebar.classList.toggle('max-md:-translate-x-full');
+
+            sidebarOverlay.classList.toggle('hidden');
+
+            const isOpen = !sidebar.classList.contains('max-md:-translate-x-full');
+            sidebarToggle.setAttribute('aria-expanded', isOpen);
+        }
+
+        sidebarToggle.addEventListener('click', toggleSidebar);
+
+        sidebarOverlay.addEventListener('click', toggleSidebar);
+    </script>
 
     <!-- Chart.js scripts -->
     <script src="../assets/script/chart.umd.min.js"></script>
